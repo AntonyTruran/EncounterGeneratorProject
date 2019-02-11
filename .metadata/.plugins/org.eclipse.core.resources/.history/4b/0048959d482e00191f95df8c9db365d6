@@ -1,0 +1,29 @@
+package com.qa.buisness;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class EncounterChoice {
+    public List<Object> table = new ArrayList();
+
+    public String userInput(DiceRoller roll){
+        //scanner for now then send to from table method
+        String creature="unknown";
+        int creatureChance = chance(roll);
+        for (Object monster : table){
+            if (creatureChance  > monster.getMin() && creatureChance< monster.getMax()) {
+            	
+            }
+        }
+        return creature;
+    }
+
+    private boolean toArray(Creature creature){
+        return table.add(creature);
+    }
+
+    private int chance(DiceRoller roll){
+        int creatureChance = roll.dice("d100");
+        return creatureChance;
+    }
+}
