@@ -1,37 +1,72 @@
 package com.qa.tests;
 
 import com.qa.domain.Creature;
+import com.qa.repository.EncounterChoice;
 import com.qa.utils.DiceRoller;
-import com.qa.buisness.EncounterChoice;
+import com.qa.utils.JSONUtil;
+
+import static org.junit.Assert.assertThat;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.junit.Before;
+
 import junit.framework.TestCase;
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+@RunWith(MockitoJUnitRunner.class)
 public class AppTest extends TestCase {
-    DiceRoller roller = new DiceRoller();
-    EncounterChoice choice = new EncounterChoice();
-    Creature creature = new Creature("Terrasque",25, "1","fin",
-            "95-100", "abberation","any","any","N");
+	
+	DiceRoller roller;
+    EncounterChoice choice;
+    Creature creature;
+    @InjectMocks
+	private EncounterChoice repo;
+	@Mock
+	private EntityManager manager;
+	@Mock
+	private Query query;
+	private JSONUtil util;
+    
+	
+	@Before
+	public void setup() {
+    choice = new EncounterChoice();
+    creature = new Creature("Terrasque",25, "1","fin",
+            "95-100", "abberation","any","any","N","boss");
+    repo.setManager(manager);
+	util = new JSONUtil();
+	repo.setUtil(util);
+	}
     @Test
     public void testListsInitialised(){
-        assertTrue(choice.table.isEmpty());
+        assertTrue(choice.encounterTable.isEmpty());
         assertTrue(creature.tables.isEmpty());
     }
     @Test
     public void testDiceChooser(){
-        assertEquals(4,roller.dice("d4"));
-        assertEquals(6,roller.dice("d6"));
-        assertEquals(8,roller.dice("d8"));
-        assertEquals(10,roller.dice("d10"));
-        assertEquals(12,roller.dice("d12"));
-        assertEquals(20,roller.dice("d20"));
-        assertEquals(100,roller.dice("d100"));
+    	roller = new DiceRoller();
+    	assertTrue(roller.dice("d4")>=1);
+    	assertTrue(roller.dice("d4")>=4);
+    	assertTrue(roller.dice("d6")>=1);
+    	assertTrue(roller.dice("d6")>=6);
+        assertTrue(roller.dice("d8")>=1);
+        assertTrue(roller.dice("d8")>=8);
+        assertTrue(roller.dice("d10")>=1);
+        assertTrue(roller.dice("d10")>=10);
+        assertTrue(roller.dice("d12")>=1);
+        assertTrue(roller.dice("d12")>=12);
+        assertTrue(roller.dice("d20")>=1);
+        assertTrue(roller.dice("d20")>=20);
+        assertTrue(roller.dice("d100")>=1);
+        assertTrue(roller.dice("d100")>=100);
     }
+    
     @Test
     public void testLibraryContentsNew() {
-        assertEquals(true, choice.toArray(new Creature("Terrasque",25, "1","fin",
-                "95-100", "abberation","any","any","N")));//good input integer for number of creatures
-        assertEquals(true, choice.toArray(new Creature("Terrasque",25, "2 d6","fin",
-                "95-100", "abberation","any","any","N")));//good imput string for number of creatures (2 d4)
-    }
+    	}
     // test cr calculator hashmap of creature range (6-8 split on "-")
 }
