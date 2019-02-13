@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
@@ -15,7 +16,7 @@ import com.qa.utils.JSONUtil;
 
 @Transactional(SUPPORTS)
 public class EncounterChoice {
-	public List<Object> encounterTable = new ArrayList();
+	public 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
 
@@ -24,10 +25,9 @@ public class EncounterChoice {
 	@Inject
 	private DiceRoller dice;
 
-	public String randomCreature() {
-		// scanner for now then send to from table method
-		String creature = "unknown";
+	public String randomCreature(String chosenTable) {
 		int creatureChance = chance(dice);
+		List<Object> encounterTable = toArray(chosenTable);
 		for (Object monster : encounterTable) {
 			// find a way to draw the chance range out to be split or substring
 			// could use range array and split before using parse int
@@ -41,9 +41,10 @@ public class EncounterChoice {
 		return util.getJSONForObject(creature);
 	}
 
-	private String toArray(Creature creature) {
-		encounterTable.add(creature);
-		return "Array filled";
+	private String toArray(String chosenTable) {
+		Query queries = manager.createQuery("SELECT a FROM Creature c WHERE c.monster_id =(SELECT a FROM monster_biome mb WHERE mb.biome_key ="chosenTable));
+//		encounterTable.add(queries);
+		return queries.toString();
 	}
 
 	private int chance(DiceRoller roll) {
