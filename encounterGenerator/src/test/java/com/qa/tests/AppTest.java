@@ -1,7 +1,7 @@
 package com.qa.tests;
 
-import com.qa.domain.Creature;
-import com.qa.repository.EncounterChoice;
+import com.qa.persistence.domain.Creature;
+import com.qa.persistence.repository.EncounterChoice;
 import com.qa.utils.DiceRoller;
 import com.qa.utils.JSONUtil;
 
