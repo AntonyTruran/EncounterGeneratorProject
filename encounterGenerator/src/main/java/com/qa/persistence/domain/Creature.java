@@ -14,12 +14,10 @@ public class Creature {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column(length = 50)	
+	@Column(length = 50)
 	private String creatrueName;
 	@Column(length = 2)
 	private int challengeRating;
-	@Column(length = 100)
-	private String table;
 	@Column(length = 4)
 	private String numberOfCreatures;
 	@Column(length = 20)
@@ -38,13 +36,11 @@ public class Creature {
 	public Creature() {
 	}
 
-	public Creature(String creatureName, int challengeRating, String numberOfCreatures, String table,
-			String chanceRange, String type, String environment, String climate, String alignment, String combatRole) {
+	public Creature(String creatureName, int challengeRating, String numberOfCreatures, String type, String environment,
+			String climate, String alignment, String combatRole) {
 		this.creatrueName = creatureName;
 		this.challengeRating = challengeRating;
-		this.table = table;
 		this.numberOfCreatures = numberOfCreatures;
-		this.chanceRange = chanceRange;
 		this.type = type;
 		this.environment = environment;
 		this.climate = climate;
@@ -58,10 +54,6 @@ public class Creature {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public void setTable(String table) {
-		this.table = table;
 	}
 
 	public String getCreatrueName() {
@@ -86,14 +78,6 @@ public class Creature {
 
 	public void setNumberOfCreatures(String numberOfCreatures) {
 		this.numberOfCreatures = numberOfCreatures;
-	}
-
-	public String getChanceRange() {
-		return chanceRange;
-	}
-
-	public void setChanceRange(String chanceRange) {
-		this.chanceRange = chanceRange;
 	}
 
 	public String getType() {

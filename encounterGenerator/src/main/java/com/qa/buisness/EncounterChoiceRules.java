@@ -3,17 +3,24 @@ package com.qa.buisness;
 public interface EncounterChoiceRules {
 	//R
 	String randomCreature(String chosenTable);
-	//SEARCH BY creature name
-		// search by enviroment
-		// search by climate
-		//search by alignment
-		// search by role
-		//search by type
-		
-		//C
-		// admin creation
-		//D
-		//admin deletion
-		//U
-		//admin update
+
+	String searchByName(String creatureName);
+	
+	String searchByEnviroment(String chosenEnviroment);
+
+	String searchByClimate(String chosenClimate);
+
+	String searchByAlignment(String chosenAlignment);
+
+	String searchByRole(String chosenRole);
+
+	String searchByType(String chosenType);
+	//C
+	String createCreature(String creature);
+
+	//D
+	String deleteCreature(int id);
+
+	//U
+	String updateCreature(int id, String account);	
 }
