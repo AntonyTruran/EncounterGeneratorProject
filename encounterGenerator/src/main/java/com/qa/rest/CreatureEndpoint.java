@@ -18,4 +18,17 @@ public class CreatureEndpoint {
 	public String randomCreature(String chosenTable) {
 		return service.randomCreature(chosenTable);
 	}
+	//SEARCH BY creature name
+		// search by enviroment
+		// search by climate
+		//search by alignment
+		// search by role
+		//search by type
+		
+		//C
+		// admin creation
+		//D
+		//admin deletion
+		//U
+		//admin update
 }
