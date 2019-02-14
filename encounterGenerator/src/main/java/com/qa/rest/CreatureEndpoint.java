@@ -1,6 +1,7 @@
 package com.qa.rest;
 
 import javax.inject.Inject;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
@@ -12,8 +13,9 @@ public class CreatureEndpoint {
 	private EncounterChoiceRules service;
 
 	@Path("/randomCreature")
+	@GET
 	@Produces({ "application/json" })
-	public String randomCreature() {
-		return service.randomCreature();
+	public String randomCreature(String chosenTable) {
+		return service.randomCreature(chosenTable);
 	}
 }

@@ -1,7 +1,7 @@
 package com.qa.tests;
 
 import com.qa.persistence.domain.Creature;
-import com.qa.persistence.repository.EncounterChoice;
+import com.qa.persistence.repository.EncounterChoiceImpl;
 import com.qa.utils.DiceRoller;
 import com.qa.utils.JSONUtil;
 
@@ -21,10 +21,10 @@ import org.mockito.Mock;
 public class AppTest extends TestCase {
 	
 	DiceRoller roller;
-    EncounterChoice choice;
+    EncounterChoiceImpl choice;
     Creature creature;
     @InjectMocks
-	private EncounterChoice repo;
+	private EncounterChoiceImpl repo;
 	@Mock
 	private EntityManager manager;
 	@Mock
@@ -34,7 +34,7 @@ public class AppTest extends TestCase {
 	
 	@Before
 	public void setup() {
-    choice = new EncounterChoice();
+    choice = new EncounterChoiceImpl();
     creature = new Creature("Terrasque",25, "1","fin",
             "95-100", "abberation","any","any","N","boss");
     repo.setManager(manager);

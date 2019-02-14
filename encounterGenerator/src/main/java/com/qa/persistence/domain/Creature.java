@@ -10,7 +10,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Creature {
-	public HashMap<String, String> tables = new HashMap<String, String>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,11 +50,6 @@ public class Creature {
 		this.climate = climate;
 		this.alignment = alignment;
 		this.combatRole = combatRole;
-		String[] environments = environment.split(" ");
-		String[] chances = chanceRange.split(",");
-		for (int i = 0; i < environments.length; i++) {
-			tables.put(environments[i], chances[i]);
-		}
 	}
 
 	public int getId() {
@@ -140,9 +134,5 @@ public class Creature {
 
 	public void setCombatRole(String combatRole) {
 		this.combatRole = combatRole;
-	}
-
-	public HashMap<String, String> getTables() {
-		return tables;
 	}
 }
