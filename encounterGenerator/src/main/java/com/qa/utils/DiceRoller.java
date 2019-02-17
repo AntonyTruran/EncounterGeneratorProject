@@ -2,6 +2,8 @@ package com.qa.utils;
 
 import java.util.Random;
 
+import javax.inject.Inject;
+
 public class DiceRoller {
     public int dice(String diceType){
         int result=0;
@@ -23,38 +25,31 @@ public class DiceRoller {
         return result;
     }
     private int d4(){
-        int roll = new Random().nextInt(4)+1;
-        roll = 4;
-        return roll;
+    	int roll = new Random().nextInt(4)+1;
+		return roll;
     }
     private int d6(){
-        int roll = new Random().nextInt(6)+1;
-        roll = 6;
-        return roll;
+    	int roll = new Random().nextInt(6)+1;
+		return roll;
     }
     private int d8(){
-        int roll = new Random().nextInt(8)+1;
-        roll = 8;
-        return roll;
+    	int roll = new Random().nextInt(8)+1;
+		return roll;
     }
     private int d10(){
-        int roll = new Random().nextInt(10)+1;
-        roll = 10;
-        return roll;
+    	int roll = new Random().nextInt(10)+1;
+		return roll;
     }
     private int d12(){
-        int roll = new Random().nextInt(12)+1;
-        roll = 12;
-        return roll;
+    	int roll = new Random().nextInt(12)+1;
+		return roll;
     }
     private int d20(){
-        int roll = new Random().nextInt(20)+1;
-        roll = 20;
-        return roll;
+    	int roll = new Random().nextInt(20)+1;
+		return roll;
     }
     private int d100(){
-        int roll = new Random().nextInt(100)+1;
-        roll = 100;
-        return roll;
+    	int roll = new Random().nextInt(100)+1;
+		return roll;
     }
 }

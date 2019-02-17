@@ -1,17 +1,9 @@
 package com.qa.creatureTests;
 
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +13,6 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.persistence.domain.Creature;
-import com.qa.persistence.repository.EncounterChoice;
 import com.qa.persistence.repository.EncounterChoiceImpl;
 import com.qa.utils.DiceRoller;
 import com.qa.utils.JSONUtil;
@@ -50,7 +41,7 @@ public class CreaturePersistenceTests extends TestCase {
 	private static final String MOCK_ENTRY = "{\"id\":0,\"creatrueName\":\"Terrasque\",\"challengeRating\":25,\"numberOfCreatures\":\"1\",\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\"}";
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		repo.setManager(manager);
 		util = new JSONUtil();
 		repo.setUtil(util);

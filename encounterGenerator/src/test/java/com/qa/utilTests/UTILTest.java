@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import com.qa.utils.DiceRoller;
 
-public class UtiLTest extends TestCase {
+public class UTILTest extends TestCase {
 	
 	DiceRoller roller;
     @Test
