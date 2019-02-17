@@ -22,37 +22,37 @@ public class DiceRoller {
         }
         return result;
     }
-    public int d4(){
+    private int d4(){
         int roll = new Random().nextInt(4)+1;
         roll = 4;
         return roll;
     }
-    public int d6(){
+    private int d6(){
         int roll = new Random().nextInt(6)+1;
         roll = 6;
         return roll;
     }
-    public int d8(){
+    private int d8(){
         int roll = new Random().nextInt(8)+1;
         roll = 8;
         return roll;
     }
-    public int d10(){
+    private int d10(){
         int roll = new Random().nextInt(10)+1;
         roll = 10;
         return roll;
     }
-    public int d12(){
+    private int d12(){
         int roll = new Random().nextInt(12)+1;
         roll = 12;
         return roll;
     }
-    public int d20(){
+    private int d20(){
         int roll = new Random().nextInt(20)+1;
         roll = 20;
         return roll;
     }
-    public int d100(){
+    private int d100(){
         int roll = new Random().nextInt(100)+1;
         roll = 100;
         return roll;

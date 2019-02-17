@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.inject.Inject"/>
+<fullyQualifiedTypeName name="com.qa.persistence.repository.EncounterChoice"/>
+<fullyQualifiedTypeName name="com.qa.buisness.EncounterChoiceRulesImpl"/>
+<fullyQualifiedTypeName name="org.junit.runner.RunWith"/>
+<fullyQualifiedTypeName name="com.qa.rest.CreatureEndpoint"/>
+<fullyQualifiedTypeName name="com.qa.buisness.EncounterChoiceRules"/>
+<fullyQualifiedTypeName name="com.qa.persistence.repository.EncounterChoiceImpl"/>
+<fullyQualifiedTypeName name="javax.ws.rs.POST"/>
+<fullyQualifiedTypeName name="javax.ws.rs.DELETE"/>
+<fullyQualifiedTypeName name="javax.ws.rs.PathParam"/>
+<fullyQualifiedTypeName name="javax.ws.rs.PUT"/>
+</qualifiedTypeNameHistroy>
