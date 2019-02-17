@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
+
 import static javax.transaction.Transactional.TxType.REQUIRED;
 
 import com.qa.persistence.domain.Creature;
@@ -40,11 +41,20 @@ public class EncounterChoiceImpl implements EncounterChoice {
 	@Override
 	public String randomCreature(String chosenTable) {
 		int chance = roll.dice("d100");
-		Query query = manager.createQuery(
+		Query creature = manager.createQuery(
 				"SELECT a FROM Creature c WHERE c.monster_id =(SELECT a FROM monster_biome mb WHERE mb.biome_key = '"
 						+ chosenTable + "' AND '" + chance + "' <= mb.max AND '" + chance + "' >= mb.min");
-		// generate number of creatures
-		return util.getJSONForObject(query.getResultList());
+//		Query query2 = manager.createQuery("SELECT toString(mb.quantity) FROM monster_biome mb WHERE mb.biome_key = '"
+//+ chosenTable + "' AND '" + chance + "' >= mb.min AND '" + chance + "' <= mb.max");
+//		int numberOfCreatures = 1;
+//		try {
+//			numberOfCreatures = query2.getFirstResult();
+//		}catch() {
+//			String[] output= query2.getSingleResult().splitString("d");
+//		}
+		// generate number of creatures select number from mb where monster key = chance
+		// try to parse the number, if fail split sting parse both and calculate (while i < numberOfDice) {numberOfCreature += roll.dice(diceType)}
+		return util.getJSONForObject(creature.getResultList());//+numberOfCreatures);
 	}
 
 	@Override

@@ -23,8 +23,7 @@ public class DiceRoller {
         return result;
     }
     private int d4(){
-    	int roll = new Random().nextInt(4)+1;
-		return roll;
+    	return new Random().nextInt(4)+1;
     }
     private int d6(){
 		return new Random().nextInt(6)+1;
