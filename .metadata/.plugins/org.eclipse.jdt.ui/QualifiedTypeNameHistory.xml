@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.inject.Inject"/>
 <fullyQualifiedTypeName name="com.qa.persistence.repository.EncounterChoice"/>
 <fullyQualifiedTypeName name="com.qa.buisness.EncounterChoiceRulesImpl"/>
 <fullyQualifiedTypeName name="org.junit.runner.RunWith"/>
@@ -11,4 +10,25 @@
 <fullyQualifiedTypeName name="javax.ws.rs.DELETE"/>
 <fullyQualifiedTypeName name="javax.ws.rs.PathParam"/>
 <fullyQualifiedTypeName name="javax.ws.rs.PUT"/>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+<fullyQualifiedTypeName name="javax.persistence.Id"/>
+<fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
+<fullyQualifiedTypeName name="javax.persistence.Column"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.qa.biomeTests.BiomeRepositoryTests"/>
+<fullyQualifiedTypeName name="javax.persistence.Query"/>
+<fullyQualifiedTypeName name="com.qa.persistence.domain.Biome"/>
+<fullyQualifiedTypeName name="com.qa.persistence.repository.BiomeRepositoryImpl"/>
+<fullyQualifiedTypeName name="com.qa.buisness.BiomeServiceImpl"/>
+<fullyQualifiedTypeName name="com.qa.persistence.repository.BiomeRepository"/>
+<fullyQualifiedTypeName name="com.qa.biomeTests.BiomeServiceTests"/>
+<fullyQualifiedTypeName name="org.mockito.InjectMocks"/>
+<fullyQualifiedTypeName name="com.qa.rest.BiomeEndpoint"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Path"/>
+<fullyQualifiedTypeName name="com.qa.buisness.BiomeService"/>
+<fullyQualifiedTypeName name="javax.inject.Inject"/>
+<fullyQualifiedTypeName name="com.qa.biomeTests.BiomeEndpointsTests"/>
 </qualifiedTypeNameHistroy>
