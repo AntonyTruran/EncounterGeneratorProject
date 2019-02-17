@@ -1,7 +1,5 @@
 package com.qa.persistence.repository;
 
-import javax.persistence.EntityManager;
-
 public interface EncounterChoice {
 
 	// R
@@ -26,5 +24,5 @@ public interface EncounterChoice {
 	String deleteCreature(int id);
 
 	// U
-	String updateCreature(int id, String account);
+	String updateCreature(int id, String creature);
 }

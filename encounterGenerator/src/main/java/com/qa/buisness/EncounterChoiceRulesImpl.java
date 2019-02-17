@@ -70,8 +70,8 @@ public class EncounterChoiceRulesImpl implements EncounterChoiceRules {
 	}
  
 	@Override
-	public String updateCreature(int id, String account) {
+	public String updateCreature(int id, String creature) {
 		// TODO Auto-generated method stub
-		return repo.updateCreature(id,account);
+		return repo.updateCreature(id,creature);
 	}
 }

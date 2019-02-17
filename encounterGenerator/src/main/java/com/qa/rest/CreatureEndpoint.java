@@ -83,11 +83,11 @@ public class CreatureEndpoint {
 	}
 
 	// U
-	@Path("/updateAccount/{id}")
+	@Path("/updateCreature/{id}")
 	@PUT
 	@Produces({ "application/json" })
-	public String updateCreature(@PathParam("id") int id, String account) {
-		return service.updateCreature(id, account);
+	public String updateCreature(@PathParam("id") int id, String creature) {
+		return service.updateCreature(id, creature);
 }
 	public void setService(EncounterChoiceRules service) {
 		this.service = service;

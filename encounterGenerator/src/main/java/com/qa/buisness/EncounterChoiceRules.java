@@ -22,5 +22,5 @@ public interface EncounterChoiceRules {
 	String deleteCreature(int id);
 
 	//U
-	String updateCreature(int id, String account);	
+	String updateCreature(int id, String creature);	
 }

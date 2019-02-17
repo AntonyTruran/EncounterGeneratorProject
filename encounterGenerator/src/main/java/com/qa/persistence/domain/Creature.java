@@ -21,8 +21,6 @@ public class Creature {
 	@Column(length = 4)
 	private String numberOfCreatures;
 	@Column(length = 20)
-	private String chanceRange;
-	@Column(length = 20)
 	private String type;
 	@Column(length = 100)
 	private String environment;
@@ -32,10 +30,7 @@ public class Creature {
 	private String alignment;
 	@Column(length = 50)
 	private String combatRole;
-
-	public Creature() {
-	}
-
+	
 	public Creature(String creatureName, int challengeRating, String numberOfCreatures, String type, String environment,
 			String climate, String alignment, String combatRole) {
 		this.creatrueName = creatureName;
@@ -47,6 +42,10 @@ public class Creature {
 		this.alignment = alignment;
 		this.combatRole = combatRole;
 	}
+
+	public Creature() {
+	}
+
 
 	public int getId() {
 		return id;
