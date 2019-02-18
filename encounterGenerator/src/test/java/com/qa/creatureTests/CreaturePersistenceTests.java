@@ -53,13 +53,11 @@ public class CreaturePersistenceTests extends TestCase {
 
 	@Test
 	public void randomCreatureTest() {
-		fail();
-//		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
-//		List<Creature> mockCreatues = new ArrayList<Creature>();
-//		mockCreatues.add(new Creature("Terrasque", 25, "abberation", "any", "any", "N", "boss"));
-//		Mockito.when(query.getResultList()).thenReturn(mockCreatues);
-//		assertEquals(MOCK_TABLE_ROW, repo.randomCreature("any"));
-//		TODO failing on the chance roll
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		List<Creature> mockCreatues = new ArrayList<Creature>();
+		mockCreatues.add(new Creature("Terrasque", 25, "abberation", "any", "any", "N", "boss"));
+		Mockito.when(query.getResultList()).thenReturn(mockCreatues);
+		assertEquals(MOCK_TABLE_ROW, repo.randomCreature("any"));
 	}
 
 	@Test
