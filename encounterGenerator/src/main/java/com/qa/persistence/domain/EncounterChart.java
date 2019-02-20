@@ -23,7 +23,7 @@ public class EncounterChart {
 		super();
 	}
 
-	@Id
+	@Id //adapt one to be a biome key (id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@ManyToOne(targetEntity = Creature.class)

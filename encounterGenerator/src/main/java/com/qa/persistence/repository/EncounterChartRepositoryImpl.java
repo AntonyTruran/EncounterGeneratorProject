@@ -24,4 +24,24 @@ public class EncounterChartRepositoryImpl implements EncounterChartRepository{
 	public void setUtil(JSONUtil util) {
 		this.util = util;
 	}
+	@Override
+	public String getContentByChart() {
+		// query to select all of a set biomes entried and join to a select creature name
+		return null;
+	}
+	@Override
+	public String newEncounterChart(String newChart) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String removeEncounterChart(String biomeKey, String monsterKey) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String updateEncounterChart(String biomeKey, String monsterKey, String updatedValue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
