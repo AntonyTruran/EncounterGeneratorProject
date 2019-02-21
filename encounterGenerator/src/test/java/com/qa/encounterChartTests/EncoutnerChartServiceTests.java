@@ -1,5 +1,7 @@
 package com.qa.encounterChartTests;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,9 +33,9 @@ public class EncoutnerChartServiceTests {
 	}
 
 	@Test
-	public void getAllEncounterCharts() {
-		Mockito.when(repo.getAllEncounterCharts()).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, service.getAllEncounterCharts());
+	public void getContentByChart() {
+		Mockito.when(repo.getContentByChart(MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, service.getContentByChart(MOCK_INPUT));
 	}
 
 	@Test
@@ -44,13 +46,13 @@ public class EncoutnerChartServiceTests {
 
 	@Test
 	public void removeEncounterChart() {
-		Mockito.when(repo.removeEncounterChart("any")).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, service.removeEncounterChart("any"));
+		Mockito.when(repo.removeEncounterChart("any", null)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, service.removeEncounterChart("any", null));
 	}
 
 	@Test
 	public void updateEncounterChart() {
-		Mockito.when(repo.updateEncounterChart("any", MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, service.updateEncounterChart("any", MOCK_INPUT));
+		Mockito.when(repo.updateEncounterChart(MOCK_INPUT, MOCK_INPUT, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, service.updateEncounterChart(MOCK_INPUT, MOCK_INPUT, MOCK_INPUT));
 	}
 }

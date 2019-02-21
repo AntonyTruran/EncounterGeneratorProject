@@ -58,7 +58,7 @@ public class BiomeRepositoryImpl implements BiomeRepository {
 	@Override
 	public String updateBiome(String reference, String biome) {
 		Biome aBiome = util.getObjectForJSON(biome, Biome.class);
-		if (manager.contains(manager.find(Creature.class, reference))) {
+		if (manager.contains(manager.find(Biome.class, reference))) {
 			manager.merge(aBiome);
 			return "{\"message\": \"the biome has been successfully updated\"}";
 		}

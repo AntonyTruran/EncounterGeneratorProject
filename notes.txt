@@ -1,0 +1,1 @@
+use the react js methods to write a funciton to enter a table row for each entry in the results

@@ -27,8 +27,10 @@ public class EncounterChart {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@ManyToOne(targetEntity = Creature.class)
+	@Column(length = 4)
 	private Creature monsterKey;
 	@ManyToOne(targetEntity = Biome.class)
+	@Column(length = 5)
 	private Biome biomeKey;
 	@Column(length = 5)
 	private String number;
