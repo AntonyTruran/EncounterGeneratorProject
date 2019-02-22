@@ -1,31 +1,19 @@
 package com.qa.persistence.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Creature {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	@Column(length = 50)
-	private String creatrueName;
-	@Column(length = 2)
-	private int challengeRating;
-	@Column(length = 20)
-	private String type;
-	@Column(length = 100)
-	private String environment;
-	@Column(length = 20)
-	private String climate;
-	@Column(length = 2)
-	private String alignment;
-	@Column(length = 50)
-	private String combatRole;
 	
 	public Creature(String creatureName, int challengeRating,String type, String environment,
 			String climate, String alignment, String combatRole) {
@@ -41,13 +29,33 @@ public class Creature {
 	public Creature() {
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int creatureId;
+	@Column(length = 50)
+	private String creatrueName;
+	@Column(length = 2)
+	private int challengeRating;
+	@Column(length = 20)
+	private String type;
+	@Column(length = 100)
+	private String environment;
+	@Column(length = 20)
+	private String climate;
+	@Column(length = 2)
+	private String alignment;
+	@Column(length = 50)
+	private String combatRole;
+	
+	@OneToMany(mappedBy="monsterKey",fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	private List <EncounterChart> chartEntries = new ArrayList<EncounterChart>();
 
-	public int getId() {
-		return id;
+	public int getCreatureId() {
+		return creatureId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCreatureId(int id) {
+		this.creatureId = id;
 	}
 
 	public String getCreatrueName() {
@@ -104,5 +112,13 @@ public class Creature {
 
 	public void setCombatRole(String combatRole) {
 		this.combatRole = combatRole;
+	}
+
+	public List<EncounterChart> getChartEntries() {
+		return chartEntries;
+	}
+
+	public void setChartEntries(List<EncounterChart> chartEntries) {
+		this.chartEntries = chartEntries;
 	}
 }

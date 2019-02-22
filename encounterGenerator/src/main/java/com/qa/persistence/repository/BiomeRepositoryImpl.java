@@ -11,7 +11,6 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.qa.persistence.domain.Biome;
-import com.qa.persistence.domain.Creature;
 import com.qa.utils.JSONUtil;
 
 @Default

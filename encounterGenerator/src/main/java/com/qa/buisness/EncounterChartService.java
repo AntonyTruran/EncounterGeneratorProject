@@ -5,7 +5,7 @@ public interface EncounterChartService {
 	
 	String newEncounterChart(String newChart);
 	
-	String removeEncounterChart(String biomeKey, String monsterKey);
+	String removeEncounterChart(String biomeKey, int monsterKey);
 	
-	String updateEncounterChart(String biomeKey, String monsterKey, String updatedValue);
+	String updateEncounterChart(String biomeKey, int monsterKey, String updatedValue);
 }

@@ -1,10 +1,16 @@
 package com.qa.persistence.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Biome {
@@ -27,6 +33,9 @@ public class Biome {
 	@Column(length = 30)
 	private String biomeName;
 	
+	@OneToMany(mappedBy="biomeKey",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	private List <EncounterChart> chartEntries = new ArrayList<EncounterChart>();
+	
 	public String getBiomeReference() {
 		return biomeReference;
 	}
@@ -38,6 +47,14 @@ public class Biome {
 	}
 	public void setBiomeName(String biomeName) {
 		this.biomeName = biomeName;
+	}
+
+	public List<EncounterChart> getChartEntries() {
+		return chartEntries;
+	}
+
+	public void setChartEntries(List<EncounterChart> chartEntries) {
+		this.chartEntries = chartEntries;
 	}
 
 }
