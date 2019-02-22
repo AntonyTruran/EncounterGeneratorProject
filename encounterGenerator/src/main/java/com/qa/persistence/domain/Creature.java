@@ -48,7 +48,7 @@ public class Creature {
 	private String combatRole;
 	
 	@OneToMany(mappedBy="monsterKey",fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-	private List <EncounterChart> chartEntries = new ArrayList<EncounterChart>();
+	private List <EncounterChart> chartEntries = new ArrayList<>();
 
 	public int getCreatureId() {
 		return creatureId;
