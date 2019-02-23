@@ -18,7 +18,6 @@ public class QuantityCalculator {
 			while (numberOfDice <= diceRequired) {
 				quantity += roll.dice(diceType);
 				numberOfDice++;
-				System.out.println(quantity);
 			}
 		} else {
 			quantity = Integer.parseInt(queryNumber);

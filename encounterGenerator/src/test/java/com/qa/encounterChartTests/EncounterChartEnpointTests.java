@@ -44,14 +44,14 @@ public class EncounterChartEnpointTests {
 
 	@Test
 	public void removeEncounterChart() {
-		Mockito.when(service.removeEncounterChart("any", "01")).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, endpoint.removeEncounterChart("any", "01"));
+		Mockito.when(service.removeEncounterChart("any", 1)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, endpoint.removeEncounterChart("any", 1));
 	}
 
 	@Test
 	public void updateEncounterChart() {
-		Mockito.when(service.updateEncounterChart("any","01", MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, endpoint.updateEncounterChart("any", "01", MOCK_INPUT));
+		Mockito.when(service.updateEncounterChart("any",1, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, endpoint.updateEncounterChart("any", 1, MOCK_INPUT));
 	}
 }
 
