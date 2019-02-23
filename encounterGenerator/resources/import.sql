@@ -1,7 +1,31 @@
-INSERT INTO owner
+INSERT INTO biome (biome_reference,biome_name) Values ('DUNLL','dungeon (low level)'
+rats
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('fire beetles
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('skeletons',0.3,'undead','ruins','temperate','NE','swarm')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('giant centipede',0.5,'vermin','underground','temperate','NN','swarm')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('spider swarm',1,'vermin','forest/jungle','temperate','NN','swarm')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('zombie',0.5,'undead','ruins','temperate','NE','tank')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('choker',2,'aberration','underground','temperate','CE','assassin')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('skeleton champion',2,'undead','ruins','temperate','NE','leader')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('goblins',0.3,'humanoid','forest/jungle','temperate','NE','swarm')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('ghoul',1,'undead','ruins','temperate','CE','damage')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('giant spiders',1,'vermin','forest/jungle','temperate','NN','none')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('cockatrice',3,'magical beast','plain','temperate','NN','special')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('gelatinous cube',3,'ooze','ruins','temperate','NN','special')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('rust monster',3,'aberration','underground',temperate','NN','special')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('shadow',3,'undead','ruins','temperate','CE','assassin')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('wight',3,'undead','ruins','temperate','LE','none')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('stirge',0.5,'magical beast','swamp','tropical','NN','ambush')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('darkmantle',1,'magical beast','underground','temperate','NN','assassin')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('troglodyte',1,'humanoid','underground','temperate','CE','swarm')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('bugbear',2,'humanoid','hill','temperate','CE','assassin')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('vargouille',2,'outsider','ruins','temperate','NE','special')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('gray ooze',4,'ooze','swamp','cold','NN','none')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('mimic',4,'aberration','underground','temperate','NN','none')
+INSERT INTO creature (creature_name, challenge_rating,type,environment,climate,alignment,combat_role) VALUES ('ogre',3,'humanoid','hill','temperate','CE','tank')
 
 
-INSERT INTO RECIPE (id, recipeName, owner, description) VALUES (1, 'Chicken Tikka Sub', '3', 'Bread, Chicken Tikka, Salad, Any Sauce')
+INSERT INTO monster_biome (monster_key, biome_key, number, max_chance, min_chance, location) VALUES (1, 'Chicken Tikka Sub', '3', 'Bread, Chicken Tikka, Salad, Any Sauce')
 INSERT INTO RECIPE (id, recipeName, owner, description) VALUES (2, 'Duck l''eorange', '2','ducks and orange')
 INSERT INTO RECIPE (id, recipeName, owner, description) VALUES (3, 'Homemade chicken korma', '1','chicken, korma powder, coconut milk, rice, onions')
 INSERT INTO RECIPE (id, recipeName, owner, description) VALUES (4, 'Stir fry rice', '4','Chicken, seasoning, rice, vegetable, egg')
