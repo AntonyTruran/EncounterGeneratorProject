@@ -1,17 +1,19 @@
 package com.qa.buisness;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-
 import com.qa.persistence.domain.EncounterChart;
 import com.qa.persistence.repository.EncounterChartRepository;
+import com.qa.utils.InputChecker;
 import com.qa.utils.JSONUtil;
 
-public class EncounterChartServiceImpl implements EncounterChartService{
+public class EncounterChartServiceImpl implements EncounterChartService {
+	
 	@Inject
 	EncounterChartRepository repo;
 	@Inject
 	private JSONUtil util;
+	@Inject
+	private InputChecker inputChecker;
 
 	public void setUtil(JSONUtil util) {
 		this.util = util;
@@ -24,20 +26,35 @@ public class EncounterChartServiceImpl implements EncounterChartService{
 
 	@Override
 	public String newEncounterChart(String newChart) {
-		EncounterChart chartEntry = util.getObjectForJSON(newChart, EncounterChart.class);
-		if (chartEntry.getBiomeKey().contains("")) {}
+		String inputCheck ="";
+		inputCheck += inputChecker.validityCheck(newChart);
+		if (inputCheck.equals("invalid")) {
+				return"{\"message\":\"the input included banned words\"}";
+			}
 		return repo.newEncounterChart(newChart);
 	}
 
 	@Override
 	public String removeEncounterChart(String biomeKey, int monsterKey) {
-		// TODO Auto-generated method stub
+		String inputCheck ="";
+		inputCheck += inputChecker.validityCheck(biomeKey);
+		if (inputCheck.equals("invalid")) {
+				return"{\"message\":\"the input included banned words\"}";
+			}
 		return repo.removeEncounterChart(biomeKey, monsterKey);
 	}
 
 	@Override
 	public String updateEncounterChart(String biomeKey, int monsterKey, String updatedValue) {
-		// TODO Auto-generated method stub
+		String inputCheck ="";
+		inputCheck += inputChecker.validityCheck(biomeKey);
+		if (inputCheck.equals("invalid")) {
+				return"{\"message\":\"the input included banned words\"}";
+			}
+		inputCheck += inputChecker.validityCheck(updatedValue);
+		if (inputCheck.equals("invalid")) {
+				return"{\"message\":\"the input included banned words\"}";
+			}
 		return repo.updateEncounterChart(biomeKey, monsterKey, updatedValue);
 	}
 
