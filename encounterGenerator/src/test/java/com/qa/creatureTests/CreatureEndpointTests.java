@@ -2,9 +2,6 @@ package com.qa.creatureTests;
 
 import static org.junit.Assert.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,10 +11,6 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.buisness.EncounterChoiceRules;
-import com.qa.buisness.EncounterChoiceRulesImpl;
-import com.qa.persistence.domain.Creature;
-import com.qa.persistence.repository.EncounterChoice;
-import com.qa.persistence.repository.EncounterChoiceImpl;
 import com.qa.rest.CreatureEndpoint;
 import com.qa.utils.JSONUtil;
 
@@ -35,7 +28,7 @@ public class CreatureEndpointTests {
 	private static final String MOCK_OUTPUT = "test_output";
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		endpoint.setService(service);
 	}
 

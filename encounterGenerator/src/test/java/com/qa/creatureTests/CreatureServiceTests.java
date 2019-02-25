@@ -13,7 +13,6 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.buisness.EncounterChoiceRulesImpl;
-import com.qa.persistence.repository.EncounterChoice;
 import com.qa.persistence.repository.EncounterChoiceImpl;
 import com.qa.utils.JSONUtil;
 
@@ -33,7 +32,7 @@ public class CreatureServiceTests {
 	private static final String MOCK_OUTPUT = "test_output";
 	
 	@Before
-	public void setup() {
+	public void setUp() {
 		service.setRepo(repo);
 	}
 

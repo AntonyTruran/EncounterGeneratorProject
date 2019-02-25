@@ -1,25 +1,41 @@
 package com.qa.persistence.domain;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Creature {
+	
+	public Creature(String creatureName, int challengeRating,String type, String environment,
+			String climate, String alignment, String combatRole) {
+		this.creatrueName = creatureName;
+		this.challengeRating = challengeRating;
+		this.type = type;
+		this.environment = environment;
+		this.climate = climate;
+		this.alignment = alignment;
+		this.combatRole = combatRole;
+	}
+
+	public Creature() {
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private int creatureId;
 	@Column(length = 50)
 	private String creatrueName;
 	@Column(length = 2)
 	private int challengeRating;
-	@Column(length = 4)
-	private String numberOfCreatures;
 	@Column(length = 20)
 	private String type;
 	@Column(length = 100)
@@ -31,28 +47,15 @@ public class Creature {
 	@Column(length = 50)
 	private String combatRole;
 	
-	public Creature(String creatureName, int challengeRating, String numberOfCreatures, String type, String environment,
-			String climate, String alignment, String combatRole) {
-		this.creatrueName = creatureName;
-		this.challengeRating = challengeRating;
-		this.numberOfCreatures = numberOfCreatures;
-		this.type = type;
-		this.environment = environment;
-		this.climate = climate;
-		this.alignment = alignment;
-		this.combatRole = combatRole;
+	@OneToMany(mappedBy="monsterKey",fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+	private List <EncounterChart> chartEntries = new ArrayList<>();
+
+	public int getCreatureId() {
+		return creatureId;
 	}
 
-	public Creature() {
-	}
-
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+	public void setCreatureId(int id) {
+		this.creatureId = id;
 	}
 
 	public String getCreatrueName() {
@@ -69,14 +72,6 @@ public class Creature {
 
 	public void setChallengeRating(int challengeRating) {
 		this.challengeRating = challengeRating;
-	}
-
-	public String getNumberOfCreatures() {
-		return numberOfCreatures;
-	}
-
-	public void setNumberOfCreatures(String numberOfCreatures) {
-		this.numberOfCreatures = numberOfCreatures;
 	}
 
 	public String getType() {
@@ -117,5 +112,13 @@ public class Creature {
 
 	public void setCombatRole(String combatRole) {
 		this.combatRole = combatRole;
+	}
+
+	public List<EncounterChart> getChartEntries() {
+		return chartEntries;
+	}
+
+	public void setChartEntries(List<EncounterChart> chartEntries) {
+		this.chartEntries = chartEntries;
 	}
 }
