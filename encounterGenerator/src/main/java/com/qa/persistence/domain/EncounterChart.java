@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class EncounterChart {
 
-	public EncounterChart(int monsterKey, String biomeKey, String number, int maxChance, int minChance) {
+	public EncounterChart(String monsterKey, String biomeKey, String number, int maxChance, int minChance) {
 		super();
 		this.monsterKey = monsterKey;
 		this.biomeKey = biomeKey;
@@ -27,8 +27,8 @@ public class EncounterChart {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@ManyToOne(targetEntity = Creature.class)
-	@Column(length = 4)
-	private int monsterKey;
+	@Column(length = 50)
+	private String monsterKey;
 	@ManyToOne(targetEntity = Biome.class)
 	@Column(length = 5)
 	private String biomeKey;
@@ -47,11 +47,11 @@ public class EncounterChart {
 		this.id = id;
 	}
 
-	public int getMonsterKey() {
+	public String getMonsterKey() {
 		return monsterKey;
 	}
 
-	public void setMonsterKey(int monsterKey) {
+	public void setMonsterKey(String monsterKey) {
 		this.monsterKey = monsterKey;
 	}
 

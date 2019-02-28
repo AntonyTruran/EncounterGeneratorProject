@@ -35,7 +35,7 @@ public class EncounterChartServiceImpl implements EncounterChartService {
 	}
 
 	@Override
-	public String removeEncounterChart(String biomeKey, int monsterKey) {
+	public String removeEncounterChart(String biomeKey, String monsterKey) {
 		String inputCheck ="";
 		inputCheck += inputChecker.validityCheck(biomeKey);
 		if (inputCheck.equals("invalid")) {
@@ -45,7 +45,7 @@ public class EncounterChartServiceImpl implements EncounterChartService {
 	}
 
 	@Override
-	public String updateEncounterChart(String biomeKey, int monsterKey, String updatedValue) {
+	public String updateEncounterChart(String biomeKey, String monsterKey, String updatedValue) {
 		String inputCheck ="";
 		inputCheck += inputChecker.validityCheck(biomeKey);
 		if (inputCheck.equals("invalid")) {

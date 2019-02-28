@@ -35,7 +35,7 @@ public class EncounterChartEndpoint {
 	@Path("/removeEncounterChart/{biomeReference}+{monsterKey}")
 	@DELETE
 	@Produces({ "applicaiton/json" })
-	public String removeEncounterChart(@PathParam("biomeKey")String biomeKey, @PathParam("monsterKey")int monsterKey) {
+	public String removeEncounterChart(@PathParam("biomeKey")String biomeKey, @PathParam("monsterKey")String monsterKey) {
 		return service.removeEncounterChart(biomeKey, monsterKey);
 	}
 
@@ -43,7 +43,7 @@ public class EncounterChartEndpoint {
 	@Path("/updateBiome/{biomeReference}")
 	@PUT
 	@Produces({ "application/json" })
-	public String updateEncounterChart(@PathParam("biomeKey")String biomeKey, @PathParam("monsterKey")int monsterKey, String updatedValue) {
+	public String updateEncounterChart(@PathParam("biomeKey")String biomeKey, @PathParam("monsterKey")String monsterKey, String updatedValue) {
 		return service.updateEncounterChart(biomeKey, monsterKey, updatedValue);
 	}
 

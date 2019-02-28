@@ -25,11 +25,12 @@ public class EncounterChartEnpointTests {
 
 	private static final String MOCK_INPUT = "test";
 	private static final String MOCK_OUTPUT = "test_output";
-	
+
 	@Before
 	public void setUp() {
 		endpoint.setService(service);
 	}
+
 	@Test
 	public void getContentByChart() {
 		Mockito.when(service.getContentByChart(MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
@@ -44,14 +45,13 @@ public class EncounterChartEnpointTests {
 
 	@Test
 	public void removeEncounterChart() {
-		Mockito.when(service.removeEncounterChart("any", 1)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, endpoint.removeEncounterChart("any", 1));
+		Mockito.when(service.removeEncounterChart("any", "bats")).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, endpoint.removeEncounterChart("any", "bats"));
 	}
 
 	@Test
 	public void updateEncounterChart() {
-		Mockito.when(service.updateEncounterChart("any",1, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, endpoint.updateEncounterChart("any", 1, MOCK_INPUT));
+		Mockito.when(service.updateEncounterChart("any", "bats", MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, endpoint.updateEncounterChart("any", "bats", MOCK_INPUT));
 	}
 }
-

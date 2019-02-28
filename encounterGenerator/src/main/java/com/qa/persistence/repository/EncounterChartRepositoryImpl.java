@@ -47,7 +47,7 @@ public class EncounterChartRepositoryImpl implements EncounterChartRepository {
 	}
 
 	@Override
-	public String removeEncounterChart(String biomeKey, int monsterKey) {
+	public String removeEncounterChart(String biomeKey, String monsterKey) {
 		if (manager.contains(manager.find(EncounterChart.class, biomeKey+monsterKey))) {
 			manager.remove(manager.find(EncounterChart.class, biomeKey+monsterKey));
 			return "{\"message\": \"the biome has been successfully deleted\"}";
@@ -56,7 +56,7 @@ public class EncounterChartRepositoryImpl implements EncounterChartRepository {
 	}
 
 	@Override
-	public String updateEncounterChart(String biomeKey, int monsterKey, String updatedValue) {
+	public String updateEncounterChart(String biomeKey, String monsterKey, String updatedValue) {
 		EncounterChart chartEntry = util.getObjectForJSON(updatedValue, EncounterChart.class);
 		if (manager.contains(manager.find(EncounterChart.class, biomeKey+monsterKey))) {
 			manager.merge(chartEntry);
