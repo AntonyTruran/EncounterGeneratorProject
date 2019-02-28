@@ -48,10 +48,15 @@ public class EncounterChoiceImpl implements EncounterChoice {
 		Query creature = manager.createQuery(
 				"SELECT a FROM Creature c WHERE c.monster_id =(SELECT a FROM monster_biome mb WHERE mb.biome_key = '"
 						+ chosenTable + "' AND '" + chance + "' <= mb.max AND '" + chance + "' >= mb.min");
-		Query query2 = manager.createQuery("SELECT mb.quantity FROM monster_biome mb WHERE mb.biome_key = '"
+		int numberOfCreatures = creatureQuantity(chosenTable,chance);
+		return util.getJSONForObject(creature.getResultList()) + numberOfCreatures;
+	}
+
+	public int creatureQuantity(String chosenTable, int chance) {
+		Query number = manager.createQuery("SELECT mb.quantity FROM monster_biome mb WHERE mb.biome_key = '"
 				+ chosenTable + "' AND '" + chance + "' >= mb.min AND '" + chance + "' <= mb.max");
-		int numberOfCreatures=quantity.calculate(query2.toString());
-		return util.getJSONForObject(creature.getResultList())+numberOfCreatures;
+		String extractedNumber = number.toString();
+		return quantity.calculate(extractedNumber);
 	}
 
 	@Override

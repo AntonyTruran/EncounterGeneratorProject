@@ -20,6 +20,7 @@ import com.qa.persistence.domain.Creature;
 import com.qa.persistence.repository.EncounterChoiceImpl;
 import com.qa.utils.DiceRoller;
 import com.qa.utils.JSONUtil;
+import com.qa.utils.QuantityCalculator;
 
 import junit.framework.TestCase;
 
@@ -35,14 +36,18 @@ public class CreaturePersistenceTests extends TestCase {
 	private Query query;
 	@Mock
 	private JSONUtil util;
+	@Mock
+	private QuantityCalculator quantity;
 
 	@Inject
 	DiceRoller roller;
 	@Inject
 	Creature creature;
 
-	private static final String MOCK_TABLE_ROW = "[{\"id\":0,\"creatrueName\":\"Terrasque\",\"challengeRating\":25,\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\"}]";
-	private static final String MOCK_ENTRY = "{\"id\":0,\"creatrueName\":\"Terrasque\",\"challengeRating\":25,\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\"}";
+	private static final String MOCK_TABLE_ROW = "[{\"creatureId\":0,\"creatrueName\":\"Terrasque\",\"challengeRating\":25,\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\",\"chartEntries\":[]}]";
+	private static final String MOCK_ENCOUNTER = "[{\"creatureId\":0,\"creatrueName\":\"Terrasque\",\"challengeRating\":25,\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\",\"chartEntries\":[]}]5";
+	private static final String MOCK_ENTRY = "{\"creatureId\":0,\"creatrueName\":\"Terrasque\",\"challengeRating\":25,\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\",\"chartEntries\":[]}";
+	private static final String NUMERIC_INPUT = "2d4";
 
 	@Before
 	public void setUp() {
@@ -54,10 +59,17 @@ public class CreaturePersistenceTests extends TestCase {
 	@Test
 	public void randomCreatureTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		Mockito.when(repo.creatureQuantity("any",20)).thenReturn(5);
 		List<Creature> mockCreatues = new ArrayList<Creature>();
 		mockCreatues.add(new Creature("Terrasque", 25, "abberation", "any", "any", "N", "boss"));
 		Mockito.when(query.getResultList()).thenReturn(mockCreatues);
-		assertEquals(MOCK_TABLE_ROW, repo.randomCreature("any"));
+		assertEquals(MOCK_ENCOUNTER, repo.randomCreature("any"));
+	}
+	@Test
+	public void creaturQuantityTest() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		Mockito.when(quantity.calculate(NUMERIC_INPUT)).thenReturn(0);
+		assertEquals("incorrect number returned",0,repo.creatureQuantity("any", 20));
 	}
 
 	@Test
@@ -69,7 +81,7 @@ public class CreaturePersistenceTests extends TestCase {
 
 	@Test
 	public void searrchByEnviroment() {
-		Creature mockCreature = new Creature("Terrasque", 25,"abberation", "any", "any", "N", "boss");
+		Creature mockCreature = new Creature("Terrasque", 25, "abberation", "any", "any", "N", "boss");
 		Mockito.when(manager.find(Mockito.anyObject(), Mockito.anyString())).thenReturn(mockCreature);
 		assertEquals(MOCK_ENTRY, repo.searchByEnviroment("MOCK_ENTRY"));
 	}
@@ -83,7 +95,7 @@ public class CreaturePersistenceTests extends TestCase {
 
 	@Test
 	public void searchByAlignment() {
-		Creature mockCreature = new Creature("Terrasque", 25,"abberation", "any", "any", "N", "boss");
+		Creature mockCreature = new Creature("Terrasque", 25, "abberation", "any", "any", "N", "boss");
 		Mockito.when(manager.find(Mockito.anyObject(), Mockito.anyString())).thenReturn(mockCreature);
 		assertEquals(MOCK_ENTRY, repo.searchByAlignment("MOCK_ENTRY"));
 	}

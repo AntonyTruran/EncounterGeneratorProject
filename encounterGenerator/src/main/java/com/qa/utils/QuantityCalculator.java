@@ -20,7 +20,11 @@ public class QuantityCalculator {
 				numberOfDice++;
 			}
 		} else {
+			try {
 			quantity = Integer.parseInt(queryNumber);
+			}catch(NumberFormatException e) {
+				return quantity;
+			}
 		}
 		return quantity;
 	}

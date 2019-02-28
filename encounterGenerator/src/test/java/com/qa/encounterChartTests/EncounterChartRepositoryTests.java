@@ -33,8 +33,8 @@ public class EncounterChartRepositoryTests {
 	@Mock
 	private JSONUtil util;
 
-	private static final String MOCK_TABLE_ROW = "[{\"id\":0,\"monsterKey\":0,\"biomeKey\":\"URBLL\",\"number\":\"1d4\",\"maxChance\":14,\"minChance\":10}]";
-	private static final String MOCK_ENTRY = "{\"id\":0,\"monsterKey\":\":0,\"biomeKey\":\"URBLL\",\"number\":\"1d4\",\"maxChance\":\"14\",\"minChance\":\"10\"}";
+	private static final String MOCK_TABLE_ROW = "[{\"id\":0,\"monsterKey\":\"bats\",\"biomeKey\":\"URBLL\",\"number\":\"1d4\",\"maxChance\":14,\"minChance\":10}]";
+	private static final String MOCK_ENTRY = "{\"id\":0,\"monsterKey\":\"bats\",\"biomeKey\":\"URBLL\",\"number\":\"1d4\",\"maxChance\":14,\"minChance\":10}";
 
 	@Before
 	public void setUp() {
