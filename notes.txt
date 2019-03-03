@@ -1,3 +1,5 @@
 use the react js methods to write a funciton to enter a table row for each entry in the results
 
 change monster key to an integer
+
+to get rid of eclipse added files for staging right click and assume unchanged
