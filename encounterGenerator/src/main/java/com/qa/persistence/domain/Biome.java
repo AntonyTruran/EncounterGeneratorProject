@@ -26,7 +26,7 @@ public class Biome {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int biomeId;
 	@Column(length = 5)
 	private String biomeReference;
