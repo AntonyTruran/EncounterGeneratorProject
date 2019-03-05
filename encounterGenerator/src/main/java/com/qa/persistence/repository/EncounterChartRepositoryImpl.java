@@ -32,9 +32,7 @@ public class EncounterChartRepositoryImpl implements EncounterChartRepository {
 
 	@Override
 	public String getContentByChart(String biomeKey) {
-		Query query = manager.createQuery("SELECT a FROM monster_biome mb WHERE biome_key ='" + biomeKey
-				+ "' JOIN slect c.creature_name FROM creature c WHERE monster_id = (SELECT mb.monster_key FROM monster_biome mb WHEREWHERE biome_key ='"
-				+ biomeKey + "')");
+		Query query = manager.createQuery("SELECT a FROM EncounterChart mb WHERE biomeKey ='" + biomeKey);
 		return util.getJSONForObject(query.getResultList());
 	}
 
@@ -46,6 +44,8 @@ public class EncounterChartRepositoryImpl implements EncounterChartRepository {
 		return "{\"message\": \"Encounter chart has been successfully created\"}";
 	}
 
+
+	@Transactional(REQUIRED)
 	@Override
 	public String removeEncounterChart(String biomeKey, String monsterKey) {
 		if (manager.contains(manager.find(EncounterChart.class, biomeKey+monsterKey))) {
@@ -55,6 +55,8 @@ public class EncounterChartRepositoryImpl implements EncounterChartRepository {
 		return "{\"message\": \"invalid biome reference\"}";
 	}
 
+
+	@Transactional(REQUIRED)
 	@Override
 	public String updateEncounterChart(String biomeKey, String monsterKey, String updatedValue) {
 		EncounterChart chartEntry = util.getObjectForJSON(updatedValue, EncounterChart.class);

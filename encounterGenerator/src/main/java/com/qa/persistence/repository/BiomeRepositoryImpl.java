@@ -32,7 +32,7 @@ public class BiomeRepositoryImpl implements BiomeRepository {
 
 	@Override
 	public String getAllBiomes() {
-		Query query = manager.createQuery("SELECT a FROM Biome a");
+		Query query = manager.createQuery("SELECT a FROM Biome");
 		return util.getJSONForObject(query.getResultList());
 	}
 
@@ -44,6 +44,8 @@ public class BiomeRepositoryImpl implements BiomeRepository {
 		return "{\"message\": \"biome has been successfully created\"}";
 	}
 
+
+	@Transactional(REQUIRED)
 	@Override
 	public String removeBiome(String reference) {
 		if (manager.contains(manager.find(Biome.class, reference))) {

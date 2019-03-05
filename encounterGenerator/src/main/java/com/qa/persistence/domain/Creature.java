@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -32,7 +33,7 @@ public class Creature {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int creatureId;
-	@Column(length = 50)
+	@Column(length = 50, name="creatrueName")
 	private String creatrueName;
 	@Column(length = 2)
 	private int challengeRating;

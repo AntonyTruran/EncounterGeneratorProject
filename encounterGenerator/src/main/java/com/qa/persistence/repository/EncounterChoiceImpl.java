@@ -46,15 +46,15 @@ public class EncounterChoiceImpl implements EncounterChoice {
 		roll = new DiceRoller();
 		int chance = roll.dice(100);
 		Query creature = manager.createQuery(
-				"SELECT a FROM Creature c WHERE c.monster_id =(SELECT a FROM monster_biome mb WHERE mb.biome_key = '"
-						+ chosenTable + "' AND '" + chance + "' <= mb.max AND '" + chance + "' >= mb.min");
+				"SELECT a FROM Creature c WHERE c.monsterKey =(SELECT a FROM EncounterChart mb WHERE mb.biomeKey = '"
+						+ chosenTable + "' AND '" + chance + "' <= mb.maxChance AND '" + chance + "' >= mb.minChance");
 		int numberOfCreatures = creatureQuantity(chosenTable,chance);
 		return util.getJSONForObject(creature.getResultList()) + numberOfCreatures;
 	}
 
 	public int creatureQuantity(String chosenTable, int chance) {
-		Query number = manager.createQuery("SELECT mb.quantity FROM monster_biome mb WHERE mb.biome_key = '"
-				+ chosenTable + "' AND '" + chance + "' >= mb.min AND '" + chance + "' <= mb.max");
+		Query number = manager.createQuery("SELECT mb.number FROM EncounterChart mb WHERE mb.biomeKey = '"
+				+ chosenTable + "' AND '" + chance + "' <= mb.maxChance AND '" + chance + "' >= mb.minChance");
 		String extractedNumber = number.toString();
 		return quantity.calculate(extractedNumber);
 	}
@@ -97,6 +97,7 @@ public class EncounterChoiceImpl implements EncounterChoice {
 		return "{\"message\": \"creature has been successfully created\"}";
 	}
 
+	@Transactional(REQUIRED)
 	@Override
 	public String deleteCreature(int id) {
 		if (manager.contains(manager.find(Creature.class, id))) {
@@ -116,9 +117,4 @@ public class EncounterChoiceImpl implements EncounterChoice {
 		}
 		return "{\"message\": \"no such creature\"}";
 	}
-
-	public String getATrainee(String trainee) {
-		return util.getJSONForObject(manager.find(Creature.class, trainee));
-	}
-
 }
