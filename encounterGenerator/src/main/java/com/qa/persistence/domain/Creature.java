@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Creature {
 	
-	public Creature(String creatureName, int challengeRating,String type, String environment,
+	public Creature(String creatureName, String challengeRating,String type, String environment,
 			String climate, String alignment, String combatRole) {
 		this.creatureName = creatureName;
 		this.challengeRating = challengeRating;
@@ -33,8 +33,8 @@ public class Creature {
 	@Id
 	@Column(length = 50, name="creatureName")
 	private String creatureName;
-	@Column(length = 2)
-	private int challengeRating;
+	@Column(length = 4)
+	private String challengeRating;
 	@Column(length = 20)
 	private String type;
 	@Column(length = 100)
@@ -57,11 +57,11 @@ public class Creature {
 		this.creatureName = creatureName;
 	}
 
-	public int getChallengeRating() {
+	public String getChallengeRating() {
 		return challengeRating;
 	}
 
-	public void setChallengeRating(int challengeRating) {
+	public void setChallengeRating(String challengeRating) {
 		this.challengeRating = challengeRating;
 	}
 
