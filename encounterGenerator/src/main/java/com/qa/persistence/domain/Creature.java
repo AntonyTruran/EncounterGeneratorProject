@@ -31,7 +31,7 @@ public class Creature {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int creatureId;
 	@Column(length = 50, name="creatrueName")
 	private String creatrueName;

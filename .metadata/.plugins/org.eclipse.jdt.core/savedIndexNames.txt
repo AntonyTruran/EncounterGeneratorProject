@@ -42,4 +42,3 @@ INDEX VERSION 1.130+C:\Users\Admin\Desktop\individual project\EncounterGenerator
 147250989.index
 2219041137.index
 956752177.index
-2478343393.index
