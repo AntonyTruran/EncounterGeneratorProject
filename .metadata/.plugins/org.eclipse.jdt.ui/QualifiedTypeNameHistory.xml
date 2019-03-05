@@ -39,4 +39,5 @@
 <fullyQualifiedTypeName name="com.qa.persistence.repository.EncounterChartRepository"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Path"/>
 <fullyQualifiedTypeName name="javax.inject.Inject"/>
+<fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
 </qualifiedTypeNameHistroy>

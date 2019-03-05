@@ -18,7 +18,7 @@ public class Creature {
 	
 	public Creature(String creatureName, int challengeRating,String type, String environment,
 			String climate, String alignment, String combatRole) {
-		this.creatrueName = creatureName;
+		this.creatureName = creatureName;
 		this.challengeRating = challengeRating;
 		this.type = type;
 		this.environment = environment;
@@ -31,10 +31,8 @@ public class Creature {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int creatureId;
-	@Column(length = 50, name="creatrueName")
-	private String creatrueName;
+	@Column(length = 50, name="creatureName")
+	private String creatureName;
 	@Column(length = 2)
 	private int challengeRating;
 	@Column(length = 20)
@@ -51,20 +49,12 @@ public class Creature {
 	@OneToMany(mappedBy="monsterKey",fetch = FetchType.EAGER,cascade=CascadeType.ALL)
 	private List <EncounterChart> chartEntries = new ArrayList<>();
 
-	public int getCreatureId() {
-		return creatureId;
+	public String getCreatureName() {
+		return creatureName;
 	}
 
-	public void setCreatureId(int id) {
-		this.creatureId = id;
-	}
-
-	public String getCreatrueName() {
-		return creatrueName;
-	}
-
-	public void setCreatrueName(String creatrueName) {
-		this.creatrueName = creatrueName;
+	public void setCreatureName(String creatureName) {
+		this.creatureName = creatureName;
 	}
 
 	public int getChallengeRating() {

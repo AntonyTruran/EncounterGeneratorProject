@@ -32,8 +32,8 @@ public class BiomeRepositoryTests extends TestCase {
 	@Mock
 	private JSONUtil util;
 
-	private static final String MOCK_TABLE_ROW = "[{\"biomeId\":0,\"biomeReference\":\"URBLL\",\"biomeName\":\"urban\",\"chartEntries\":[]}]";
-	private static final String MOCK_ENTRY = "{\"biomeId\":0,\"biomeReference\":\"URBLL\",\"biomeName\":\"urban\"}";
+	private static final String MOCK_TABLE_ROW = "[{\"biomeReference\":\"URBLL\",\"biomeName\":\"urban\",\"chartEntries\":[]}]";
+	private static final String MOCK_ENTRY = "{\"biomeReference\":\"URBLL\",\"biomeName\":\"urban\"}";
 
 	@Before
 	public void setUp() {

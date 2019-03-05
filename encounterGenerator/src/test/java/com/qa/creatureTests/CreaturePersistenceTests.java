@@ -44,9 +44,9 @@ public class CreaturePersistenceTests extends TestCase {
 	@Inject
 	Creature creature;
 
-	private static final String MOCK_TABLE_ROW = "[{\"creatureId\":0,\"creatrueName\":\"Terrasque\",\"challengeRating\":25,\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\",\"chartEntries\":[]}]";
-	private static final String MOCK_ENCOUNTER = "[{\"creatureId\":0,\"creatrueName\":\"Terrasque\",\"challengeRating\":25,\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\",\"chartEntries\":[]}]5";
-	private static final String MOCK_ENTRY = "{\"creatureId\":0,\"creatrueName\":\"Terrasque\",\"challengeRating\":25,\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\",\"chartEntries\":[]}";
+	private static final String MOCK_TABLE_ROW = "[{\"creatureName\":\"Terrasque\",\"challengeRating\":25,\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\",\"chartEntries\":[]}]";
+	private static final String MOCK_ENCOUNTER = "[{\"creatureName\":\"Terrasque\",\"challengeRating\":25,\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\",\"chartEntries\":[]}]5";
+	private static final String MOCK_ENTRY = "{\"creatureName\":\"Terrasque\",\"challengeRating\":25,\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\",\"chartEntries\":[]}";
 	private static final String NUMERIC_INPUT = "2d4";
 
 	@Before
