@@ -28,10 +28,10 @@ public class EncounterChart {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@ManyToOne(targetEntity = Creature.class)
-	@JoinColumn(name = "creatrueName")
+	@JoinColumn(name = "monsterKey")
 	private String monsterKey;
 	@ManyToOne(targetEntity = Biome.class)
-	@JoinColumn(name = "biomeReference")
+	@JoinColumn(name = "biomeKey")
 	private String biomeKey;
 	@Column(length = 5)
 	private String number;
