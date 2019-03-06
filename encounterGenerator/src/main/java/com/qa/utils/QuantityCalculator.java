@@ -11,19 +11,32 @@ public class QuantityCalculator {
 		roll = new DiceRoller();
 		int quantity = 0;
 		int numberOfDice = 1;
-		if (queryNumber.contains("d")) {
-			String[] randomAmount = queryNumber.split("d");
-			int diceRequired = Integer.parseInt(randomAmount[0]);
-			int diceType = Integer.parseInt(randomAmount[1]);
+		int diceRequired = 0;
+		int diceType = 0;
+		Character extracted;
+		String extractedString;
+		
+		try {
+			quantity = Integer.parseInt(queryNumber);
+			return quantity;
+		} catch (NumberFormatException e1) {
+			try {
+				extracted = queryNumber.charAt(0);
+				extractedString = extracted.toString();
+				diceRequired = Integer.parseInt(extractedString);
+			} catch (NumberFormatException e2) {
+				System.out.println("error two");
+			}
+			try {
+				extracted = queryNumber.charAt(2);
+				extractedString = extracted.toString();
+				diceType = Integer.parseInt(extractedString);
+			} catch (NumberFormatException e3) {
+				System.out.println("error three");
+			}
 			while (numberOfDice <= diceRequired) {
 				quantity += roll.dice(diceType);
 				numberOfDice++;
-			}
-		} else {
-			try {
-			quantity = Integer.parseInt(queryNumber);
-			}catch(NumberFormatException e) {
-				return quantity;
 			}
 		}
 		return quantity;
