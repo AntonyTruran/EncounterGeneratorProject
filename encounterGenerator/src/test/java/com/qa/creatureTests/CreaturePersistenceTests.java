@@ -69,6 +69,7 @@ public class CreaturePersistenceTests extends TestCase {
 //	@Test
 //	public void creaturQuantityTest() {
 //		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+//		Mockito.when(query.getSingleResult()).thenReturn(NUMERIC_INPUT);
 //		Mockito.when(quantity.calculate(NUMERIC_INPUT)).thenReturn(0);
 //		assertEquals("incorrect number returned",0,repo.creatureQuantity("any", 20));
 //	}

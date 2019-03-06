@@ -3,6 +3,7 @@ package com.qa.persistence.repository;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
@@ -57,11 +58,18 @@ public class EncounterChoiceImpl implements EncounterChoice {
 
 	public int creatureQuantity(String chosenTable, int chance) {
 		Query number = manager.createQuery(
-				"SELECT ec.number FROM EncounterChart ec WHERE biomeKey like :chosenTable AND :chance BETWEEN maxChance AND minChance")
+				"SELECT ec.number FROM EncounterChart ec WHERE biomeKey like :chosenTable AND maxChance >= :chance AND minChance <= :chance")
 				.setParameter("chosenTable", chosenTable).setParameter("chance", chance);
-		String extractedNumber = (String) number.getSingleResult();
-		System.out.println(extractedNumber);
-		return quantity.calculate(extractedNumber);
+		try {
+			Object extractedNumber = number.getSingleResult();
+			System.out.println();
+			String extracted = extractedNumber.toString();
+			System.out.println(extracted);
+			System.out.println(extracted);
+			return quantity.calculate(extracted);
+		} catch (NoResultException e) {
+			return 0;
+		}
 	}
 
 	@Override
@@ -138,4 +146,3 @@ public class EncounterChoiceImpl implements EncounterChoice {
 		return "{\"message\": \"no such creature\"}";
 	}
 }
-		

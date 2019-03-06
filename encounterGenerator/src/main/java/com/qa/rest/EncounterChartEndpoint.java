@@ -16,10 +16,10 @@ public class EncounterChartEndpoint {
 	@Inject
 	private EncounterChartService service;
 
-	@Path("/getContentByChart")
+	@Path("/getContentByChart/{biomeKey}")
 	@GET
 	@Produces({ "application/json" })
-	public String getContentByChart(String biomeKey) {
+	public String getContentByChart(@PathParam("biomeKey")String biomeKey) {
 		return service.getContentByChart(biomeKey);
 	}
 
