@@ -3,10 +3,13 @@ package com.qa.persistence.repository;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
+
+import java.util.Collection;
 
 import static javax.transaction.Transactional.TxType.REQUIRED;
 
@@ -46,17 +49,27 @@ public class EncounterChoiceImpl implements EncounterChoice {
 		roll = new DiceRoller();
 		int chance = roll.dice(100);
 		Query creature = manager.createQuery(
-				"SELECT a FROM Creature c WHERE c.monster_id =(SELECT a FROM monster_biome mb WHERE mb.biome_key = '"
-						+ chosenTable + "' AND '" + chance + "' <= mb.max AND '" + chance + "' >= mb.min");
-		int numberOfCreatures = creatureQuantity(chosenTable,chance);
-		return util.getJSONForObject(creature.getResultList()) + numberOfCreatures;
+				"SELECT a FROM Creature a WHERE a.creatureName =(SELECT ec.monsterKey FROM EncounterChart ec WHERE biomeKey like :chosenTable AND maxChance >= :chance AND minChance <= :chance)")
+				.setParameter("chosenTable", chosenTable).setParameter("chance", chance);
+		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
+		String numberOfCreatures = "{\"message\": " + creatureQuantity(chosenTable, chance) + "}";
+		return util.getJSONForObject(creatures) + numberOfCreatures;
 	}
 
 	public int creatureQuantity(String chosenTable, int chance) {
-		Query number = manager.createQuery("SELECT mb.quantity FROM monster_biome mb WHERE mb.biome_key = '"
-				+ chosenTable + "' AND '" + chance + "' >= mb.min AND '" + chance + "' <= mb.max");
-		String extractedNumber = number.toString();
-		return quantity.calculate(extractedNumber);
+		Query number = manager.createQuery(
+				"SELECT ec.number FROM EncounterChart ec WHERE biomeKey like :chosenTable AND maxChance >= :chance AND minChance <= :chance")
+				.setParameter("chosenTable", chosenTable).setParameter("chance", chance);
+		try {
+			Object extractedNumber = number.getSingleResult();
+			System.out.println();
+			String extracted = extractedNumber.toString();
+			System.out.println(extracted);
+			System.out.println(extracted);
+			return quantity.calculate(extracted);
+		} catch (NoResultException e) {
+			return 0;
+		}
 	}
 
 	@Override
@@ -66,27 +79,42 @@ public class EncounterChoiceImpl implements EncounterChoice {
 
 	@Override
 	public String searchByEnviroment(String chosenEnviroment) {
-		return util.getJSONForObject(manager.find(Creature.class, chosenEnviroment));
+		Query query = manager.createQuery("SELECT c FROM Creature c WHERE environment LIKE :chosenEnviroment")
+				.setParameter("chosenEnviroment", chosenEnviroment);
+		Collection<Creature> creatures = (Collection<Creature>) query.getResultList();
+		return util.getJSONForObject(creatures);
 	}
 
 	@Override
 	public String searchByClimate(String chosenClimate) {
-		return util.getJSONForObject(manager.find(Creature.class, chosenClimate));
+		Query creature = manager.createQuery("SELECT c FROM Creature c WHERE climate LIKE :chosenClimate")
+				.setParameter("chosenClimate", chosenClimate);
+		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
+		return util.getJSONForObject(creatures);
 	}
 
 	@Override
 	public String searchByAlignment(String chosenAlignment) {
-		return util.getJSONForObject(manager.find(Creature.class, chosenAlignment));
+		Query creature = manager.createQuery("SELECT c FROM Creature c WHERE environment LIKE :chosenAlignment")
+				.setParameter("chosenAlignment", chosenAlignment);
+		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
+		return util.getJSONForObject(creatures);
 	}
 
 	@Override
 	public String searchByRole(String chosenRole) {
-		return util.getJSONForObject(manager.find(Creature.class, chosenRole));
+		Query creature = manager.createQuery("SELECT c FROM Creature c WHERE environment LIKE :chosenRole")
+				.setParameter("chosenRole", chosenRole);
+		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
+		return util.getJSONForObject(creatures);
 	}
 
 	@Override
 	public String searchByType(String chosenType) {
-		return util.getJSONForObject(manager.find(Creature.class, chosenType));
+		Query creature = manager.createQuery("SELECT c FROM Creature c WHERE environment LIKE :chosenType")
+				.setParameter("chosenType", chosenType);
+		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
+		return util.getJSONForObject(creatures);
 	}
 
 	@Transactional(REQUIRED)
@@ -97,6 +125,7 @@ public class EncounterChoiceImpl implements EncounterChoice {
 		return "{\"message\": \"creature has been successfully created\"}";
 	}
 
+	@Transactional(REQUIRED)
 	@Override
 	public String deleteCreature(int id) {
 		if (manager.contains(manager.find(Creature.class, id))) {
@@ -116,9 +145,4 @@ public class EncounterChoiceImpl implements EncounterChoice {
 		}
 		return "{\"message\": \"no such creature\"}";
 	}
-
-	public String getATrainee(String trainee) {
-		return util.getJSONForObject(manager.find(Creature.class, trainee));
-	}
-
 }

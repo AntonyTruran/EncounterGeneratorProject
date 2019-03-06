@@ -3,6 +3,8 @@ package com.qa.persistence.repository;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
+import java.util.Collection;
+
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -11,6 +13,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.qa.persistence.domain.Biome;
+import com.qa.persistence.domain.Creature;
 import com.qa.utils.JSONUtil;
 
 @Default
@@ -33,7 +36,8 @@ public class BiomeRepositoryImpl implements BiomeRepository {
 	@Override
 	public String getAllBiomes() {
 		Query query = manager.createQuery("SELECT a FROM Biome a");
-		return util.getJSONForObject(query.getResultList());
+		Collection<Biome> biomes = (Collection<Biome>) query.getResultList();
+		return util.getJSONForObject(biomes);
 	}
 
 	@Transactional(REQUIRED)
@@ -44,6 +48,8 @@ public class BiomeRepositoryImpl implements BiomeRepository {
 		return "{\"message\": \"biome has been successfully created\"}";
 	}
 
+
+	@Transactional(REQUIRED)
 	@Override
 	public String removeBiome(String reference) {
 		if (manager.contains(manager.find(Biome.class, reference))) {

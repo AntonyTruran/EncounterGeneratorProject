@@ -13,12 +13,10 @@
 <fullyQualifiedTypeName name="org.junit.Test"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="com.qa.biomeTests.BiomeRepositoryTests"/>
 <fullyQualifiedTypeName name="javax.persistence.Query"/>
 <fullyQualifiedTypeName name="com.qa.persistence.repository.BiomeRepositoryImpl"/>
 <fullyQualifiedTypeName name="com.qa.buisness.BiomeServiceImpl"/>
 <fullyQualifiedTypeName name="com.qa.persistence.repository.BiomeRepository"/>
-<fullyQualifiedTypeName name="com.qa.biomeTests.BiomeServiceTests"/>
 <fullyQualifiedTypeName name="org.mockito.InjectMocks"/>
 <fullyQualifiedTypeName name="com.qa.rest.BiomeEndpoint"/>
 <fullyQualifiedTypeName name="com.qa.buisness.BiomeService"/>
@@ -39,4 +37,12 @@
 <fullyQualifiedTypeName name="com.qa.persistence.repository.EncounterChartRepository"/>
 <fullyQualifiedTypeName name="javax.ws.rs.Path"/>
 <fullyQualifiedTypeName name="javax.inject.Inject"/>
+<fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
+<fullyQualifiedTypeName name="java.util.Collection"/>
+<fullyQualifiedTypeName name="org.junit.Ignore"/>
+<fullyQualifiedTypeName name="com.qa.creatureTests.CreatureEndpointTests"/>
+<fullyQualifiedTypeName name="com.qa.utilTests.UTILTest"/>
+<fullyQualifiedTypeName name="com.qa.biomeTests.BiomeRepositoryTests"/>
+<fullyQualifiedTypeName name="com.qa.biomeTests.BiomeServiceTests"/>
+<fullyQualifiedTypeName name="com.qa.creatureTests.CreaturePersistenceTests"/>
 </qualifiedTypeNameHistroy>

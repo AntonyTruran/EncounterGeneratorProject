@@ -36,6 +36,6 @@ public class UTILTest extends TestCase {
 	public void testQuantityCalculator() {
 		assertEquals(1, quant.calculate("1"));
 		assertTrue(quant.calculate("2d4") >= 2 && quant.calculate("2d4") <= 8);
-		assertTrue(quant.calculate("3d10") >= 3 && quant.calculate("3d10") <= 30);
+		assertTrue(quant.calculate("3d8") >= 3 && quant.calculate("3d8") <= 30);
 	}
 }

@@ -43,14 +43,14 @@ public class EncounterChartRepositoryTests {
 		repo.setUtil(util);
 	}
 
-	@Test
-	public void getContentsByChart() {
-		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
-		List<EncounterChart> mockEncounterCharts = new ArrayList<EncounterChart>();
-		mockEncounterCharts.add(new EncounterChart( "bats","URBLL", "1d4", 14, 10));
-		Mockito.when(query.getResultList()).thenReturn(mockEncounterCharts);
-		assertEquals(MOCK_TABLE_ROW, repo.getContentByChart("URBLL"));
-	}
+//	@Test
+//	public void getContentsByChart() {
+//		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+//		List<EncounterChart> mockEncounterCharts = new ArrayList<EncounterChart>();
+//		mockEncounterCharts.add(new EncounterChart( "bats","URBLL", "1d4", 14, 10));
+//		Mockito.when(query.getResultList()).thenReturn(mockEncounterCharts);
+//		assertEquals(MOCK_TABLE_ROW, repo.getContentByChart("URBLL"));
+//	}
 
 	@Test
 	public void newEncounterChart() {

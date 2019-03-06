@@ -16,52 +16,52 @@ public class CreatureEndpoint {
 	@Inject
 	private EncounterChoiceRules service;
 
-	@Path("/randomCreature")
+	@Path("/randomCreature/{biomeKey}")
 	@GET
 	@Produces({ "application/json" })
-	public String randomCreature(String chosenTable) {
+	public String randomCreature(@PathParam("biomeKey")String chosenTable) {
 		return service.randomCreature(chosenTable);
 	}
 
-	@Path("/searchByName")
+	@Path("/searchByName/{creatureName}")
 	@GET
 	@Produces({ "application/json" })
-	public String searchByName(String creatureName) {
+	public String searchByName(@PathParam("creatureName")String creatureName) {
 		return service.searchByName(creatureName);
 	}
 
-	@Path("/searchByEnviroment")
+	@Path("/searchByEnviroment/{environment}")
 	@GET
 	@Produces({ "application/json" })
-	public String searchByEnviroment(String chosenEnviroment) {
+	public String searchByEnviroment(@PathParam("environment")String chosenEnviroment) {
 		return service.searchByEnviroment(chosenEnviroment);
 	}
 
-	@Path("/searchByClimate")
+	@Path("/searchByClimate/{climate}")
 	@GET
 	@Produces({ "application/json" })
-	public String searchByClimate(String chosenClimate) {
+	public String searchByClimate(@PathParam("climate")String chosenClimate) {
 		return service.searchByClimate(chosenClimate);
 	}
 
-	@Path("/searchByAlignment")
+	@Path("/searchByAlignment/{alignment}")
 	@GET
 	@Produces({ "application/json" })
-	public String searchByAlignment(String chosenAlignment) {
+	public String searchByAlignment(@PathParam("alignment")String chosenAlignment) {
 		return service.searchByAlignment(chosenAlignment);
 	}
 
-	@Path("/searchByType")
+	@Path("/searchByType/{type}")
 	@GET
 	@Produces({ "application/json" })
-	public String searchByType(String chosenType) {
+	public String searchByType(@PathParam("type")String chosenType) {
 		return service.searchByType(chosenType);
 	}
 
-	@Path("/searchByRole")
+	@Path("/searchByRole/{role}")
 	@GET
 	@Produces({ "application/json" })
-	public String searchByRole(String chosenRole) {
+	public String searchByRole(@PathParam("role")String chosenRole) {
 		return service.searchByRole(chosenRole);
 	}
 
@@ -75,18 +75,18 @@ public class CreatureEndpoint {
 
 	// admin creation
 	// D
-	@Path("/deleteCreature/{id}")
+	@Path("/deleteCreature/{creatureName}")
 	@DELETE
 	@Produces({ "applicaiton/json" })
-	public String deleteCreature(@PathParam("id") int id) {
+	public String deleteCreature(@PathParam("creatureName") int id) {
 		return service.deleteCreature(id);
 	}
 
 	// U
-	@Path("/updateCreature/{id}")
+	@Path("/updateCreature/{creatureName}")
 	@PUT
 	@Produces({ "application/json" })
-	public String updateCreature(@PathParam("id") int id, String creature) {
+	public String updateCreature(@PathParam("creatureName") int id, String creature) {
 		return service.updateCreature(id, creature);
 }
 	public void setService(EncounterChoiceRules service) {

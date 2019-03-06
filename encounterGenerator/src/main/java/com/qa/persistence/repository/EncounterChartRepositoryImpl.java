@@ -3,6 +3,8 @@ package com.qa.persistence.repository;
 import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
+import java.util.Collection;
+
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -10,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import com.qa.persistence.domain.Creature;
 import com.qa.persistence.domain.EncounterChart;
 import com.qa.utils.JSONUtil;
 
@@ -32,10 +35,10 @@ public class EncounterChartRepositoryImpl implements EncounterChartRepository {
 
 	@Override
 	public String getContentByChart(String biomeKey) {
-		Query query = manager.createQuery("SELECT a FROM monster_biome mb WHERE biome_key ='" + biomeKey
-				+ "' JOIN slect c.creature_name FROM creature c WHERE monster_id = (SELECT mb.monster_key FROM monster_biome mb WHEREWHERE biome_key ='"
-				+ biomeKey + "')");
-		return util.getJSONForObject(query.getResultList());
+		Query query = manager.createQuery("SELECT a FROM EncounterChart a WHERE biomeKey like :biomeReference")
+				.setParameter("biomeReference", biomeKey);
+		Collection<EncounterChart> entries = (Collection<EncounterChart>) query.getResultList();
+		return util.getJSONForObject(entries);
 	}
 
 	@Transactional(REQUIRED)
@@ -46,19 +49,21 @@ public class EncounterChartRepositoryImpl implements EncounterChartRepository {
 		return "{\"message\": \"Encounter chart has been successfully created\"}";
 	}
 
+	@Transactional(REQUIRED)
 	@Override
 	public String removeEncounterChart(String biomeKey, String monsterKey) {
-		if (manager.contains(manager.find(EncounterChart.class, biomeKey+monsterKey))) {
-			manager.remove(manager.find(EncounterChart.class, biomeKey+monsterKey));
+		if (manager.contains(manager.find(EncounterChart.class, biomeKey + monsterKey))) {
+			manager.remove(manager.find(EncounterChart.class, biomeKey + monsterKey));
 			return "{\"message\": \"the biome has been successfully deleted\"}";
 		}
 		return "{\"message\": \"invalid biome reference\"}";
 	}
 
+	@Transactional(REQUIRED)
 	@Override
 	public String updateEncounterChart(String biomeKey, String monsterKey, String updatedValue) {
 		EncounterChart chartEntry = util.getObjectForJSON(updatedValue, EncounterChart.class);
-		if (manager.contains(manager.find(EncounterChart.class, biomeKey+monsterKey))) {
+		if (manager.contains(manager.find(EncounterChart.class, biomeKey + monsterKey))) {
 			manager.merge(chartEntry);
 			return "{\"message\": \"the biome has been successfully updated\"}";
 		}

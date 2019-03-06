@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -23,14 +24,14 @@ public class EncounterChart {
 		super();
 	}
 
-	@Id //adapt one to be a biome key (id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@ManyToOne(targetEntity = Creature.class)
-	@Column(length = 50)
+//	@ManyToOne(targetEntity = Creature.class)
+//	@JoinColumn(name = "monsterKey")
 	private String monsterKey;
-	@ManyToOne(targetEntity = Biome.class)
-	@Column(length = 5)
+//	@ManyToOne(targetEntity = Biome.class)
+//	@JoinColumn(name = "biomeKey")
 	private String biomeKey;
 	@Column(length = 5)
 	private String number;
@@ -77,5 +78,13 @@ public class EncounterChart {
 
 	public void setMinChance(int minChance) {
 		this.minChance = minChance;
+	}
+
+	public int getMaxChance() {
+		return maxChance;
+	}
+
+	public void setMaxChance(int maxChance) {
+		this.maxChance = maxChance;
 	}
 }

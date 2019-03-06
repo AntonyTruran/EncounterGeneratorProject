@@ -26,15 +26,13 @@ public class Biome {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int biomeId;
 	@Column(length = 5)
 	private String biomeReference;
 	@Column(length = 30)
 	private String biomeName;
 	
 	@OneToMany(mappedBy="biomeKey",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-	private List <EncounterChart> chartEntries = new ArrayList<>();
+	private List<EncounterChart> chartEntries = new ArrayList<EncounterChart>();
 	
 	public String getBiomeReference() {
 		return biomeReference;

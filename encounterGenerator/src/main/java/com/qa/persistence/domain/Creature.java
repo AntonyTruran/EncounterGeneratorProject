@@ -10,14 +10,15 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Creature {
 	
-	public Creature(String creatureName, int challengeRating,String type, String environment,
+	public Creature(String creatureName, String challengeRating,String type, String environment,
 			String climate, String alignment, String combatRole) {
-		this.creatrueName = creatureName;
+		this.creatureName = creatureName;
 		this.challengeRating = challengeRating;
 		this.type = type;
 		this.environment = environment;
@@ -30,12 +31,10 @@ public class Creature {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int creatureId;
-	@Column(length = 50)
-	private String creatrueName;
-	@Column(length = 2)
-	private int challengeRating;
+	@Column(length = 50, name="creatureName")
+	private String creatureName;
+	@Column(length = 4)
+	private String challengeRating;
 	@Column(length = 20)
 	private String type;
 	@Column(length = 100)
@@ -50,27 +49,19 @@ public class Creature {
 	@OneToMany(mappedBy="monsterKey",fetch = FetchType.EAGER,cascade=CascadeType.ALL)
 	private List <EncounterChart> chartEntries = new ArrayList<>();
 
-	public int getCreatureId() {
-		return creatureId;
+	public String getCreatureName() {
+		return creatureName;
 	}
 
-	public void setCreatureId(int id) {
-		this.creatureId = id;
+	public void setCreatureName(String creatureName) {
+		this.creatureName = creatureName;
 	}
 
-	public String getCreatrueName() {
-		return creatrueName;
-	}
-
-	public void setCreatrueName(String creatrueName) {
-		this.creatrueName = creatrueName;
-	}
-
-	public int getChallengeRating() {
+	public String getChallengeRating() {
 		return challengeRating;
 	}
 
-	public void setChallengeRating(int challengeRating) {
+	public void setChallengeRating(String challengeRating) {
 		this.challengeRating = challengeRating;
 	}
 
