@@ -27,11 +27,11 @@ public class EncounterChart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@ManyToOne(targetEntity = Creature.class)
-	@JoinColumn(name = "monsterKey")
+//	@ManyToOne(targetEntity = Creature.class)
+//	@JoinColumn(name = "monsterKey")
 	private String monsterKey;
-	@ManyToOne(targetEntity = Biome.class)
-	@JoinColumn(name = "biomeKey")
+//	@ManyToOne(targetEntity = Biome.class)
+//	@JoinColumn(name = "biomeKey")
 	private String biomeKey;
 	@Column(length = 5)
 	private String number;
@@ -78,5 +78,13 @@ public class EncounterChart {
 
 	public void setMinChance(int minChance) {
 		this.minChance = minChance;
+	}
+
+	public int getMaxChance() {
+		return maxChance;
+	}
+
+	public void setMaxChance(int maxChance) {
+		this.maxChance = maxChance;
 	}
 }

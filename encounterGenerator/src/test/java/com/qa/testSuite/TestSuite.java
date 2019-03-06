@@ -16,9 +16,9 @@ import com.qa.utilTests.UTILTest;
 
 @RunWith(Suite.class)
 
-@Suite.SuiteClasses({ CreatureEndpointTests.class, CreaturePersistenceTests.class, CreatureServiceTests.class,
-		UTILTest.class, BiomeRepositoryTests.class, BiomeServiceTests.class, BiomeEndpointsTests.class,
-		EncounterChartRepositoryTests.class, EncoutnerChartServiceTests.class, EncounterChartEnpointTests.class })
+@Suite.SuiteClasses({ CreatureEndpointTests.class,
+		UTILTest.class, BiomeRepositoryTests.class, BiomeServiceTests.class,CreaturePersistenceTests.class, BiomeEndpointsTests.class,
+		EncounterChartRepositoryTests.class, EncoutnerChartServiceTests.class, EncounterChartEnpointTests.class,  CreatureServiceTests.class })
 public class TestSuite {
 
 }

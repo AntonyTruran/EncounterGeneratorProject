@@ -32,7 +32,7 @@ public class Biome {
 	private String biomeName;
 	
 	@OneToMany(mappedBy="biomeKey",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-	private List <EncounterChart> chartEntries = new ArrayList<>();
+	private List<EncounterChart> chartEntries = new ArrayList<EncounterChart>();
 	
 	public String getBiomeReference() {
 		return biomeReference;
