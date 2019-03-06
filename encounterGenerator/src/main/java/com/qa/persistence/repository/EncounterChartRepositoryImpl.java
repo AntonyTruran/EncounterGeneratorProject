@@ -35,7 +35,7 @@ public class EncounterChartRepositoryImpl implements EncounterChartRepository {
 
 	@Override
 	public String getContentByChart(String biomeKey) {
-		Query query = manager.createQuery("SELECT a FROM EncounterChart mb WHERE biomeKey = like :biomeReference")
+		Query query = manager.createQuery("SELECT a FROM EncounterChart a WHERE biomeKey like :biomeReference")
 				.setParameter("biomeReference", biomeKey);
 		Collection<EncounterChart> entries = (Collection<EncounterChart>) query.getResultList();
 		return util.getJSONForObject(entries);
