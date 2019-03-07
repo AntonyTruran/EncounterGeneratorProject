@@ -6,6 +6,7 @@ class Navbar extends Component {
   render() {
     return (
       <div>
+      <header className="App-header">
         <ul>
           <button id="home">
             <Link to="/">Home</Link>
@@ -23,12 +24,14 @@ class Navbar extends Component {
             <Link to="/EncounterCharts">Routing within routing!</Link>
           </button>
         </ul>
+        </header>
+        <body>
         <Route exact path="/" component={Home} />
         <Route path="/RandomEncounter" component={RandomEncounter} />
         <Route path="/Creatures" component={Creatures} />
-        <Route path="//Biomes" component={Biomes} />} />
+        <Route path="/Biomes" component={Biomes} />} />
         <Route path="/EncounterCharts" component={EncounterCharts} />
-
+        </body>
       </div>
     );
   }
