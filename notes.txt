@@ -3,3 +3,9 @@ use the react js methods to write a funciton to enter a table row for each entry
 to get rid of eclipse added files for staging right click and assume unchanged
 
 use the react js methods to write a funciton to enter a table row for each entry in the results
+
+change encounter chart update and delete to go off id not keys or check how to send two paramiters accross a url
+
+https://github.com/smurfjames101/WildflySetup/blob/master/README.md from react app
+
+to deploy backend upload war file into to virtual machine using the cogs and then copy it from user home into wildfly deployments folder
