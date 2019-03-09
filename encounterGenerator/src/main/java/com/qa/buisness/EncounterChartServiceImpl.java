@@ -35,27 +35,18 @@ public class EncounterChartServiceImpl implements EncounterChartService {
 	}
 
 	@Override
-	public String removeEncounterChart(String biomeKey, String monsterKey) {
-		String inputCheck ="";
-		inputCheck += inputChecker.validityCheck(biomeKey);
-		if (inputCheck.equals("invalid")) {
-				return"{\"message\":\"the input included banned words\"}";
-			}
-		return repo.removeEncounterChart(biomeKey, monsterKey);
+	public String removeEncounterChart(int id) {
+		return repo.removeEncounterChart(id);
 	}
 
 	@Override
-	public String updateEncounterChart(String biomeKey, String monsterKey, String updatedValue) {
+	public String updateEncounterChart(int id, String updatedValue) {
 		String inputCheck ="";
-		inputCheck += inputChecker.validityCheck(biomeKey);
-		if (inputCheck.equals("invalid")) {
-				return"{\"message\":\"the input included banned words\"}";
-			}
 		inputCheck += inputChecker.validityCheck(updatedValue);
 		if (inputCheck.equals("invalid")) {
 				return"{\"message\":\"the input included banned words\"}";
 			}
-		return repo.updateEncounterChart(biomeKey, monsterKey, updatedValue);
+		return repo.updateEncounterChart(id, updatedValue);
 	}
 
 	public void setRepo(EncounterChartRepository repo) {

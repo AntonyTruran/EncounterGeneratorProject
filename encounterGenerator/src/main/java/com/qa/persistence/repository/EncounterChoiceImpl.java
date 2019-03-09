@@ -49,10 +49,10 @@ public class EncounterChoiceImpl implements EncounterChoice {
 		roll = new DiceRoller();
 		int chance = roll.dice(100);
 		Query creature = manager.createQuery(
-				"SELECT a FROM Creature a WHERE a.creatureName =(SELECT ec.monsterKey FROM EncounterChart ec WHERE biomeKey like :chosenTable AND maxChance >= :chance AND minChance <= :chance)")
+				"SELECT a.creatureName, a.challengeRating, a.type, a.environment, a.climate, a.alignment, a.combatRole FROM Creature a WHERE a.creatureName =(SELECT ec.monsterKey FROM EncounterChart ec WHERE biomeKey like :chosenTable AND maxChance >= :chance AND minChance <= :chance)")
 				.setParameter("chosenTable", chosenTable).setParameter("chance", chance);
 		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
-		String numberOfCreatures = "{\"message\": " + creatureQuantity(chosenTable, chance) + "}";
+		String numberOfCreatures = "{\"quantity\": " + creatureQuantity(chosenTable, chance) + "}";
 		return util.getJSONForObject(creatures) + numberOfCreatures;
 	}
 

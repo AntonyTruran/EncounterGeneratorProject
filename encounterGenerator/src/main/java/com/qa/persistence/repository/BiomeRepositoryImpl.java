@@ -35,11 +35,11 @@ public class BiomeRepositoryImpl implements BiomeRepository {
 
 	@Override
 	public String getAllBiomes() {
-		Query query = manager.createQuery("SELECT a FROM Biome a");
+		Query query = manager.createQuery("SELECT a.biomeReference, a.biomeName FROM Biome a");
 		Collection<Biome> biomes = (Collection<Biome>) query.getResultList();
 		return util.getJSONForObject(biomes);
 	}
-
+	
 	@Transactional(REQUIRED)
 	@Override
 	public String newBiome(String biome) {
