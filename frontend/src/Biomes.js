@@ -12,11 +12,32 @@ class Biomes extends Component {
       biomeName: ''
     }
     this.getBiomes = this.getBiomes.bind(this);
-    this.update = this.create.bind(this);
+    this.create = this.create.bind(this);
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
     this.setBiomeRef = this.setBiomeRef.bind(this);
     this.setBiomeName = this.setBiomeName.bind(this);
+  }
+  update = (e) => {
+    axios.put('http://localhost:8080/EncounterGenerator/api/biome/updateBiome/'.this.state.biomeRef, {
+      "biomeReference": document.getElementById('reference').value,
+      "biomeName": document.getElementById('name').value
+    }).then(response => {
+      console.log(response.data);
+      this.setState({
+        result: response.data
+      });
+      let updateResult = JSON.stringify(response.data);
+      updateResult = updateResult.replace(/\[/g, " ");
+      updateResult = updateResult.replace(/]/g, "</br> ");
+      updateResult = updateResult.replace(/{/g, " <div>");
+      updateResult = updateResult.replace(/}/g, " </div>");
+      updateResult = updateResult.replace(/\"/g, "");
+      updateResult = updateResult.replace(/,/g, " ");
+      updateResult = updateResult.replace(/\\/g, "");
+
+      document.getElementById('result').innerHTML = updateResult;
+    });
   }
   create = (e) => {
     axios.post('http://localhost:8080/EncounterGenerator/api/biome/newBiome', {
@@ -57,27 +78,6 @@ class Biomes extends Component {
       deleteResult = deleteResult.replace(/\\/g, "");
 
       document.getElementById('result').innerHTML = deleteResult;
-    });
-  }
-  update = (e) => {
-    axios.put('http://localhost:8080/EncounterGenerator/api/biome/updateBiome/'.this.state.biomeRef, {
-      "biomeReference": document.getElementById('reference').value,
-      "biomeName": document.getElementById('name').value
-    }).then(response => {
-      console.log(response.data);
-      this.setState({
-        result: response.data
-      });
-      let updateResult = JSON.stringify(response.data);
-      updateResult = updateResult.replace(/\[/g, " ");
-      updateResult = updateResult.replace(/]/g, "</br> ");
-      updateResult = updateResult.replace(/{/g, " <div>");
-      updateResult = updateResult.replace(/}/g, " </div>");
-      updateResult = updateResult.replace(/\"/g, "");
-      updateResult = updateResult.replace(/,/g, " ");
-      updateResult = updateResult.replace(/\\/g, "");
-
-      document.getElementById('result').innerHTML = updateResult;
     });
   }
   getBiomes = (e) => {
