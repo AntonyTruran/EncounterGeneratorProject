@@ -1,12 +1,12 @@
 // this page is the desired end format for the code output
-      wordnice = wordnice.replace('[', "<tr>");
-      wordnice = wordnice.replace(']', " </tr>");
-      wordnice = wordnice.replace(/{/g, " ");
-      wordnice = wordnice.replace(/}/g, " </td>");
-      wordnice = wordnice.replace(/\"/g, "");
-      wordnice = wordnice.replace(/,/g, "</td>");
-      wordnice = wordnice.replace(/:/g, "<td>")
-      
+
+      wordnice = wordnice.replace(/\[/g, "<tr>");
+      wordnice = wordnice.replace(/\\\"/g, "<td>");
+      wordnice = wordnice.replace(/\\\",/g, "</td>");
+      wordnice = wordnice.replace(/\\\"/g, "</td>");
+      wordnice = wordnice.replace(/]]/g, "");
+      wordnice = wordnice.replace(/{/g, "<td>");
+      wordnice = wordnice.replace(/}/g, "</td></tr>");
       <table>
       <thead>
         <tr>

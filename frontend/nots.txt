@@ -1,6 +1,9 @@
 replace the start and end parts with tr tags and the data with td tags
 
+
 https://github.com/JoshuaGomersall/ReactWebsiteIndivProject/blob/master/src/Buttons.js joshs example
+
 change random creature query to ignore the chart entries
+
 
 run npm install or update to rebuild the project

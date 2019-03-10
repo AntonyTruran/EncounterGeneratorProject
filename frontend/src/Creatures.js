@@ -34,7 +34,7 @@ class Creatures extends Component {
     this.setCombatRole = this.setCombatRole.bind(this);
   }
   update = (e) => {
-    axios.put('http://localhost:8080/EncounterGenerator/api/creature/updateCreature/'+this.state.creatureName, {
+    axios.put('http://localhost:8080/EncounterGenerator/api/creature/updateCreature/' + this.state.creatureName, {
       "creatureName": document.getElementById('newName').value,
       "challengeRating": document.getElementById('cr').value,
       "type": document.getElementById('newType').value,
@@ -64,10 +64,10 @@ class Creatures extends Component {
       "creatureName": document.getElementById('newName').value,
       "challengeRating": document.getElementById('cr').value,
       "type": document.getElementById('newType').value,
-      "enviroment": document.getElementById('newEnviroment').value,
+      "environment": document.getElementById('newEnviroment').value,
       "climate": document.getElementById('newClimate').value,
       "alignment": document.getElementById('newAlignment').value,
-      "role": document.getElementById('newRole').value
+      "combatRole": document.getElementById('newRole').value
     }).then(response => {
       console.log(response.data);
       this.setState({
@@ -239,18 +239,22 @@ class Creatures extends Component {
   render() {
     return (
       <article className="App">
+        <div>
+          <h1>CREATURES</h1>
+          <p>use the following text boxes to create new creatures, all entries need to be filled out</p>
+        </div>
         <div id="modify">
           <input type="text" id="newName" placeholder="enter name" value={this.state.value} onChange={this.setCreatureName} />
-          <input type="text" id="cr" placeholder="enter challenge rating"value={this.state.value} onChange={this.setChallengeRating} />
+          <input type="text" id="cr" placeholder="enter challenge rating" value={this.state.value} onChange={this.setChallengeRating} />
           <input type="text" id="newType" placeholder="enter type" value={this.state.value} onChange={this.setType} />
           <input type="text" id="newEnviroment" placeholder="enter environment" value={this.state.value} onChange={this.setEnvironment} />
           <input type="text" id="newClimate" placeholder="enter climate" value={this.state.value} onChange={this.setClimate} />
           <input type="text" id="newAlignment" placeholder="enter alignment" value={this.state.value} onChange={this.setAlignment} />
           <input type="text" id="newRole" placeholder="enter combat role" value={this.state.value} onChange={this.setCombatRole} />
           <br></br>
-          <input type="button" id="create" value="create biome" onClick={this.create}></input>
-          <input type="button" id="delete" value="delete biome" onClick={this.delete}></input>
-          <input type="button" id="update" value="update biome" onClick={this.update}></input>
+          <input type="button" id="create" value="create creature" onClick={this.create}></input>
+          <input type="button" id="delete" value="delete creature" onClick={this.delete}></input>
+          <input type="button" id="update" value="update creature" onClick={this.update}></input>
           <p id="result"></p>
         </div>
         <div id="name">
@@ -259,6 +263,7 @@ class Creatures extends Component {
           <br></br>
           <input type="text" id="creature" placeholder="enter name" value={this.state.value} onChange={this.setName} />
           <input type="button" id="nameSearch" value="searchByName" onClick={this.searchByName}></input>
+          <p>creature name, cr, type, environment, climate, alignment, combat role</p>
           <p id="creaturesByName"></p>
         </div>
         <div id="type">
@@ -267,6 +272,7 @@ class Creatures extends Component {
           <br></br>
           <input type="text" id="chosentype" placeholder="choose environment" value={this.state.value} onChange={this.setType} />
           <input type="button" id="environmentSearch" value="searchByenvironment" onClick={this.searchByType}></input>
+          <p>creature name, cr, type, environment, climate, alignment, combat role</p>
           <p id="creaturesByType"></p>
         </div>
         <div id="environment">
@@ -275,6 +281,7 @@ class Creatures extends Component {
           <br></br>
           <input type="text" id="chosenEnvironment" placeholder="choose environment" value={this.state.value} onChange={this.setEnvironment} />
           <input type="button" id="environmentSearch" value="searchByenvironment" onClick={this.searchByEnvironment}></input>
+          <p>creature name, cr, type, environment, climate, alignment, combat role</p>
           <p id="creaturesByEnvironment"></p>
         </div>
         <div id="climate">
@@ -283,6 +290,7 @@ class Creatures extends Component {
           <br></br>
           <input type="text" id="chosenClimate" placeholder="choose climate" value={this.state.value} onChange={this.setClimate} />
           <input type="button" id="climateSearch" value="searchByClimate" onClick={this.searchByClimate}></input>
+          <p>creature name, cr, type, environment, climate, alignment, combat role</p>
           <p id="creaturesByClimate"></p>
         </div>
         <div id="alignment">
@@ -291,6 +299,7 @@ class Creatures extends Component {
           <br></br>
           <input type="text" id="chosenAlignment" placeholder="choose role" value={this.state.value} onChange={this.setAlignment} />
           <input type="button" id="alignmentSearch" value="searchByAlignment" onClick={this.searchByAlignment}></input>
+          <p>creature name, cr, type, environment, climate, alignment, combat role</p>
           <p id="creaturesByAlignment"></p>
         </div>
         <div id="role">
@@ -299,6 +308,7 @@ class Creatures extends Component {
           <br></br>
           <input type="text" id="chosenRole" placeholder="choose role" value={this.state.value} onChange={this.setCombatRole} />
           <input type="button" id="roleSearch" value="searchByCombatRole" onClick={this.searchByCombatRole}></input>
+          <p>creature name, cr, type, environment, climate, alignment, combat role</p>
           <p id="creaturesByRole"></p>
         </div>
       </article>

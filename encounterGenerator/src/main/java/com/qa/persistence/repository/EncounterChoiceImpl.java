@@ -79,7 +79,8 @@ public class EncounterChoiceImpl implements EncounterChoice {
 
 	@Override
 	public String searchByEnviroment(String chosenEnviroment) {
-		Query query = manager.createQuery("SELECT c FROM Creature c WHERE environment LIKE :chosenEnviroment")
+		Query query = manager.createQuery(
+				"SELECT a.creatureName, a.challengeRating, a.type, a.environment, a.climate, a.alignment, a.combatRole FROM Creature a WHERE environment LIKE :chosenEnviroment")
 				.setParameter("chosenEnviroment", chosenEnviroment);
 		Collection<Creature> creatures = (Collection<Creature>) query.getResultList();
 		return util.getJSONForObject(creatures);
@@ -87,7 +88,7 @@ public class EncounterChoiceImpl implements EncounterChoice {
 
 	@Override
 	public String searchByClimate(String chosenClimate) {
-		Query creature = manager.createQuery("SELECT c FROM Creature c WHERE climate LIKE :chosenClimate")
+		Query creature = manager.createQuery("SELECT a.creatureName, a.challengeRating, a.type, a.environment, a.climate, a.alignment, a.combatRole  FROM Creature a WHERE climate LIKE :chosenClimate")
 				.setParameter("chosenClimate", chosenClimate);
 		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
 		return util.getJSONForObject(creatures);
@@ -95,7 +96,7 @@ public class EncounterChoiceImpl implements EncounterChoice {
 
 	@Override
 	public String searchByAlignment(String chosenAlignment) {
-		Query creature = manager.createQuery("SELECT c FROM Creature c WHERE environment LIKE :chosenAlignment")
+		Query creature = manager.createQuery("SELECT a.creatureName, a.challengeRating, a.type, a.environment, a.climate, a.alignment, a.combatRole FROM Creature a WHERE environment LIKE :chosenAlignment")
 				.setParameter("chosenAlignment", chosenAlignment);
 		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
 		return util.getJSONForObject(creatures);
@@ -103,7 +104,7 @@ public class EncounterChoiceImpl implements EncounterChoice {
 
 	@Override
 	public String searchByRole(String chosenRole) {
-		Query creature = manager.createQuery("SELECT c FROM Creature c WHERE environment LIKE :chosenRole")
+		Query creature = manager.createQuery("SELECT a.creatureName, a.challengeRating, a.type, a.environment, a.climate, a.alignment, a.combatRole FROM Creature a WHERE environment LIKE :chosenRole")
 				.setParameter("chosenRole", chosenRole);
 		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
 		return util.getJSONForObject(creatures);
@@ -111,7 +112,7 @@ public class EncounterChoiceImpl implements EncounterChoice {
 
 	@Override
 	public String searchByType(String chosenType) {
-		Query creature = manager.createQuery("SELECT c FROM Creature c WHERE environment LIKE :chosenType")
+		Query creature = manager.createQuery("SELECT a.creatureName, a.challengeRating, a.type, a.environment, a.climate, a.alignment, a.combatRole FROM Creature a WHERE environment LIKE :chosenType")
 				.setParameter("chosenType", chosenType);
 		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
 		return util.getJSONForObject(creatures);

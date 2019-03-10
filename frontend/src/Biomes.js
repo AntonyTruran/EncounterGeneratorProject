@@ -19,7 +19,7 @@ class Biomes extends Component {
     this.setBiomeName = this.setBiomeName.bind(this);
   }
   update = (e) => {
-    axios.put('http://localhost:8080/EncounterGenerator/api/biome/updateBiome/'.this.state.biomeRef, {
+    axios.put('http://localhost:8080/EncounterGenerator/api/biome/updateBiome/'+this.state.biomeRef, {
       "biomeReference": document.getElementById('reference').value,
       "biomeName": document.getElementById('name').value
     }).then(response => {
@@ -109,17 +109,17 @@ class Biomes extends Component {
   render() {
     return (
       <article>
-        <br></br>
         <h1>Biomes Table</h1>
         <p>enter the information you wish to use for updating creating or deleting a biome</p>
-        <input type="text" id="reference" value={this.state.value} onChange={this.setBiomeRef} />
-        <input type="text" id="name" value={this.state.value} onChange={this.setBiomeName} />
+        <input type="text" placeholder="biome reference" id="reference" value={this.state.value} onChange={this.setBiomeRef} />
+        <input type="text" placeholder="biome name or description" id="name" value={this.state.value} onChange={this.setBiomeName} />
         <input type="button" id="create" value="create biome" onClick={this.create}></input>
         <input type="button" id="delete" value="delete biome" onClick={this.delete}></input>
         <input type="button" id="update" value="update biome" onClick={this.update}></input>
         <p id='result'> </p>
         <br></br>
         <input type="button" id="randomise" value="show all" onClick={this.getBiomes}></input>
+        <p>biome reference, biome name</p>
         <p id='biomes'></p>
       </article >
     );

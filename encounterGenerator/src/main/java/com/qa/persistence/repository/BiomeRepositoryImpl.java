@@ -39,7 +39,7 @@ public class BiomeRepositoryImpl implements BiomeRepository {
 		Collection<Biome> biomes = (Collection<Biome>) query.getResultList();
 		return util.getJSONForObject(biomes);
 	}
-	
+
 	@Transactional(REQUIRED)
 	@Override
 	public String newBiome(String biome) {
@@ -47,7 +47,6 @@ public class BiomeRepositoryImpl implements BiomeRepository {
 		manager.persist(newBiome);
 		return "{\"message\": \"biome has been successfully created\"}";
 	}
-
 
 	@Transactional(REQUIRED)
 	@Override
@@ -69,5 +68,4 @@ public class BiomeRepositoryImpl implements BiomeRepository {
 		}
 		return "{\"message\": \"invalid biome reference\"}";
 	}
-
 }

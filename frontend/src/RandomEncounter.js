@@ -15,21 +15,21 @@ class RandomEncounter extends Component {
     this.setBiome = this.setBiome.bind(this);
     this.getBiomes = this.getBiomes.bind(this);
   }
-  getBiomes = (e) =>{
-    axios.get('http://localhost:8080/EncounterGenerator/api/biome/getAllBiomes').then(response =>{
+  getBiomes = (e) => {
+    axios.get('http://localhost:8080/EncounterGenerator/api/biome/getAllBiomes').then(response => {
       console.log(response.Data);
       this.setState({
         biomes: response.data
       });
-      let biomeList =JSON.stringify(response.data);
-      biomeList = biomeList.replace(/\[/g," ");
-      biomeList = biomeList.replace(/]/g,"</br> ");
-      biomeList = biomeList.replace(/{/g," <div>");
-      biomeList = biomeList.replace(/}/g," </div>");
+      let biomeList = JSON.stringify(response.data);
+      biomeList = biomeList.replace(/\[/g, " ");
+      biomeList = biomeList.replace(/]/g, "</br> ");
+      biomeList = biomeList.replace(/{/g, " <div>");
+      biomeList = biomeList.replace(/}/g, " </div>");
       biomeList = biomeList.replace(/\"/g, "");
-      biomeList = biomeList.replace(/,/g," ");
-      biomeList = biomeList.replace(/\\/g,"");
-      
+      biomeList = biomeList.replace(/,/g, " ");
+      biomeList = biomeList.replace(/\\/g, "");
+
       document.getElementById('biomes').innerHTML = biomeList;
     });
   }
@@ -41,16 +41,13 @@ class RandomEncounter extends Component {
         data: response.data
       });
       let wordnice = JSON.stringify(response.data);
-      
-      wordnice = wordnice.replace(/\[/g," ");
-      wordnice = wordnice.replace(/]/g," ");
-      wordnice = wordnice.replace(/{/g," <div>");
-      wordnice = wordnice.replace(/}/g," </div>");
+      wordnice = wordnice.replace(/\[/g, " ");
+      wordnice = wordnice.replace(/]/g, "</br> ");
+      wordnice = wordnice.replace(/{/g, " <div>");
+      wordnice = wordnice.replace(/}/g, " </div>");
       wordnice = wordnice.replace(/\"/g, "");
-      wordnice = wordnice.replace(/,/g,"<br/>");
-      wordnice = wordnice.replace(/\\/g,"");
-
-
+      wordnice = wordnice.replace(/,/g, ", ");
+      wordnice = wordnice.replace(/\\/g, "");
       document.getElementById('random').innerHTML = wordnice;
     });
   }
@@ -64,12 +61,14 @@ class RandomEncounter extends Component {
         <br></br>
         <h1>Encounter Randomiser</h1>
         <p>enter the biome Reference for the chart you wish to use, click on the show button to display the list of current biomes</p>
-          <input type="text" value={this.state.value} onChange={this.setBiome} />
-          <input type="button" id="randomise" value="randomise" onClick={this.tableData}></input>
+        <input type="text" value={this.state.value} onChange={this.setBiome} />
+        <input type="button" id="randomise" value="randomise" onClick={this.tableData}></input>
+        <p>creature name, cr, type, environment, climate, alignment, combat role</p>
         <p id='random'> </p>
         <br></br>
         <input type="button" id="randomise" value="show" onClick={this.getBiomes}></input>
-        <p  id='biomes'></p>
+        <p>biome reference, biome name</p>
+        <p id='biomes'></p>
       </article>
     );
   }
