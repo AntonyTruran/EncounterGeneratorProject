@@ -1,0 +1,10 @@
+link to presentation: https://docs.google.com/presentation/d/1oguA0njAOT7sl7U6_VsBwbsWfJg2-nXDu8YBLOmY57E/edit#slide=id.g5275ac5c20_0_5
+server ip address: http://35.189.103.145:3000
+trello board: https://trello.com/b/fbLEULQl/individual-project-encounter-generator
+
+instructions:
+load server
+start wildfly running using 'sudo sh wildfly-10.1.0.Final/bin/standalone.sh'
+    might need to cd into home
+cd ~/EncounterGeneratorProject/frontend
+npm start
