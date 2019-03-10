@@ -16,7 +16,7 @@ class RandomEncounter extends Component {
     this.getBiomes = this.getBiomes.bind(this);
   }
   getBiomes = (e) => {
-    axios.get('http://localhost:8080/EncounterGenerator/api/biome/getAllBiomes').then(response => {
+    axios.get('http://35.189.103.145:8888/EncounterGenerator/api/biome/getAllBiomes').then(response => {
       console.log(response.Data);
       this.setState({
         biomes: response.data
@@ -35,7 +35,7 @@ class RandomEncounter extends Component {
   }
 
   tableData = (e) => {
-    axios.get('http://localhost:8080/EncounterGenerator/api/creature/randomCreature/' + this.state.biome).then(response => {
+    axios.get('http://35.189.103.145:8888/EncounterGenerator/api/creature/randomCreature/' + this.state.biome).then(response => {
       console.log(response.data);
       this.setState({
         data: response.data

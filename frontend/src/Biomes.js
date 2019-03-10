@@ -19,7 +19,7 @@ class Biomes extends Component {
     this.setBiomeName = this.setBiomeName.bind(this);
   }
   update = (e) => {
-    axios.put('http://localhost:8080/EncounterGenerator/api/biome/updateBiome/'+this.state.biomeRef, {
+    axios.put('http://35.189.103.145:8888/EncounterGenerator/api/biome/updateBiome/'+this.state.biomeRef, {
       "biomeReference": document.getElementById('reference').value,
       "biomeName": document.getElementById('name').value
     }).then(response => {
@@ -40,7 +40,7 @@ class Biomes extends Component {
     });
   }
   create = (e) => {
-    axios.post('http://localhost:8080/EncounterGenerator/api/biome/newBiome', {
+    axios.post('http://35.189.103.145:8888/EncounterGenerator/api/biome/newBiome', {
       "biomeReference": document.getElementById('reference').value,
       "biomeName": document.getElementById('name').value
     }).then(response => {
@@ -63,7 +63,7 @@ class Biomes extends Component {
   delete = (e) => {
     console.log("START DELETE");
     alert("are you sure you wish to delete this biome?");
-    axios.delete('http://localhost:8080/EncounterGenerator/api/biome/removeBiome/' + this.state.biomeRef).then(response => {
+    axios.delete('http://35.189.103.145:8888/EncounterGenerator/api/biome/removeBiome/' + this.state.biomeRef).then(response => {
       console.log(response.data);
       this.setState({
         result: response.data
@@ -81,7 +81,7 @@ class Biomes extends Component {
     });
   }
   getBiomes = (e) => {
-    axios.get('http://localhost:8080/EncounterGenerator/api/biome/getAllBiomes').then(response => {
+    axios.get('http://35.189.103.145:8888/EncounterGenerator/api/biome/getAllBiomes').then(response => {
       console.log(response.Data);
       this.setState({
         biomes: response.data

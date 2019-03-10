@@ -35,7 +35,7 @@ class Creatures extends Component {
     this.setCombatRole = this.setCombatRole.bind(this);
   }
   update = (e) => {
-    axios.put('http://localhost:8080/EncounterGenerator/api/creature/updateCreature/' + this.state.creatureName, {
+    axios.put('http://35.189.103.145:8888/EncounterGenerator/api/creature/updateCreature/' + this.state.creatureName, {
       "creatureName": document.getElementById('newName').value,
       "challengeRating": document.getElementById('cr').value,
       "type": document.getElementById('newType').value,
@@ -61,7 +61,7 @@ class Creatures extends Component {
     });
   }
   create = (e) => {
-    axios.post('http://localhost:8080/EncounterGenerator/api/creature/createCreature', {
+    axios.post('http://35.189.103.145:8888/EncounterGenerator/api/creature/createCreature', {
       "creatureName": document.getElementById('newName').value,
       "challengeRating": document.getElementById('cr').value,
       "type": document.getElementById('newType').value,
@@ -89,7 +89,7 @@ class Creatures extends Component {
   delete = (e) => {
     console.log("START DELETE");
     alert("are you sure you wish to delete this creature?");
-    axios.delete('http://localhost:8080/EncounterGenerator/api/creature/deleteCreature/' + this.state.creatureName).then(response => {
+    axios.delete('http://35.189.103.145:8888/EncounterGenerator/api/creature/deleteCreature/' + this.state.creatureName).then(response => {
       console.log(response.data);
       this.setState({
         result: response.data
@@ -107,7 +107,7 @@ class Creatures extends Component {
     });
   }
   searchByName = (e) => {
-    axios.get('http://localhost:8080/EncounterGenerator/api/creature/searchByName/' + this.state.creatureName).then(response => {
+    axios.get('http://35.189.103.145:8888/EncounterGenerator/api/creature/searchByName/' + this.state.creatureName).then(response => {
       console.log(response.Data);
       this.setState({
         byName: response.data
@@ -125,7 +125,7 @@ class Creatures extends Component {
     });
   }
   searchByType = (e) => {
-    axios.get('http://localhost:8080/EncounterGenerator/api/creature/searchByType/' + this.state.type).then(response => {
+    axios.get('http://35.189.103.145:8888/EncounterGenerator/api/creature/searchByType/' + this.state.type).then(response => {
       console.log(response.Data);
       this.setState({
         byType: response.data
@@ -142,7 +142,7 @@ class Creatures extends Component {
     });
   }
   searchByEnvironment = (e) => {
-    axios.get('http://localhost:8080/EncounterGenerator/api/creature/searchByEnviroment/' + this.state.enviroment).then(response => {
+    axios.get('http://35.189.103.145:8888/EncounterGenerator/api/creature/searchByEnviroment/' + this.state.enviroment).then(response => {
       console.log(response.Data);
       this.setState({
         byEnvironment: response.data
@@ -159,7 +159,7 @@ class Creatures extends Component {
     });
   }
   searchByClimate = (e) => {
-    axios.get('http://localhost:8080/EncounterGenerator/api/creature/searchByClimate/' + this.state.climate).then(response => {
+    axios.get('http://35.189.103.145:8888/EncounterGenerator/api/creature/searchByClimate/' + this.state.climate).then(response => {
       console.log(response.Data);
       this.setState({
         byClimates: response.data
@@ -176,7 +176,7 @@ class Creatures extends Component {
     });
   }
   searchByAlignment = (e) => {
-    axios.get('http://localhost:8080/EncounterGenerator/api/creature/searchByAlignment/' + this.state.alignment).then(response => {
+    axios.get('http://35.189.103.145:8888/EncounterGenerator/api/creature/searchByAlignment/' + this.state.alignment).then(response => {
       console.log(response.Data);
       this.setState({
         byAlignment: response.data
@@ -193,7 +193,7 @@ class Creatures extends Component {
     });
   }
   searchByCombatRole = (e) => {
-    axios.get('http://localhost:8080/EncounterGenerator/api/creature/searchByRole/' + this.state.combatRole).then(response => {
+    axios.get('http://35.189.103.145:8888/EncounterGenerator/api/creature/searchByRole/' + this.state.combatRole).then(response => {
       console.log(response.Data);
       this.setState({
         byRole: response.data
