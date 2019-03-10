@@ -49,6 +49,7 @@ public class CreaturePersistenceTests extends TestCase {
 	private static final String MOCK_ENCOUNTER = "[{\"creatureName\":\"Terrasque\",\"challengeRating\":\"25\",\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\",\"chartEntries\":[]}][{\"number\":5}]";
 	private static final String MOCK_ENTRY = "{\"creatureName\":\"Terrasque\",\"challengeRating\":\"25\",\"type\":\"abberation\",\"environment\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"combatRole\":\"boss\",\"chartEntries\":[]}";
 	private static final String NUMERIC_INPUT = "2d4";
+	private static final String MOCK_ITEM = "goblins";
 
 	@Before
 	public void setUp() {
@@ -141,12 +142,12 @@ public class CreaturePersistenceTests extends TestCase {
 	@Test
 	public void deleteCreatureValid() {
 		Mockito.when(manager.contains(Mockito.anyObject())).thenReturn(true);
-		assertEquals("{\"message\": \"creature has been successfully deleted\"}", repo.deleteCreature(1));
+		assertEquals("{\"message\": \"creature has been successfully deleted\"}", repo.deleteCreature(MOCK_ITEM));
 	}
 
 	@Test
 	public void deleteCreatureInvalid() {
-		assertEquals("{\"message\": \"invalid creature number\"}", repo.deleteCreature(1));
+		assertEquals("{\"message\": \"invalid creature number\"}", repo.deleteCreature(MOCK_ITEM));
 	}
 
 	@Test
@@ -155,7 +156,7 @@ public class CreaturePersistenceTests extends TestCase {
 		Mockito.when(manager.contains(Mockito.anyObject())).thenReturn(true);
 		Mockito.when(manager.find(Mockito.any(), Mockito.anyLong())).thenReturn(updatedCreature);
 		assertEquals("{\"message\": \"the creature has been successfully updated\"}",
-				repo.updateCreature(1, updatedCreature));
+				repo.updateCreature(MOCK_ITEM, updatedCreature));
 	}
 
 	@Test
@@ -164,12 +165,12 @@ public class CreaturePersistenceTests extends TestCase {
 		Mockito.when(manager.contains(Mockito.anyObject())).thenReturn(true);
 		Mockito.when(manager.find(Mockito.any(), Mockito.anyInt())).thenReturn(updatedCreature);
 		assertEquals("{\"message\": \"the creature has been successfully updated\"}",
-				repo.updateCreature(1, updatedCreature));
+				repo.updateCreature(MOCK_ITEM, updatedCreature));
 	}
 
 	@Test
 	public void testUpdateAccountFailed() {
 		String updatedCreature = "{\"name\":\"Terrasque\",\"CR\":\"25\",\"number\":\"2\",\"type\":\"abberation\",\"type\":\"any\",\"climate\":\"any\",\"alignment\":\"N\",\"role\":\"boss\"}";
-		assertEquals("{\"message\": \"no such creature\"}", repo.updateCreature(5, updatedCreature));
+		assertEquals("{\"message\": \"no such creature\"}", repo.updateCreature(MOCK_ITEM, updatedCreature));
 	}
 }

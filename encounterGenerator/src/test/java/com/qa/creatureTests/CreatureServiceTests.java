@@ -30,6 +30,7 @@ public class CreatureServiceTests {
 
 	private static final String MOCK_INPUT = "test";
 	private static final String MOCK_OUTPUT = "test_output";
+	private static final String MOCK_ITEM = "goblins";
 	
 	@Before
 	public void setUp() {
@@ -86,31 +87,31 @@ public class CreatureServiceTests {
 
 	@Test
 	public void deleteCreatureValid() {
-		Mockito.when(repo.deleteCreature(1)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, service.deleteCreature(1));
+		Mockito.when(repo.deleteCreature(MOCK_ITEM)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, service.deleteCreature(MOCK_ITEM));
 	}
 
 	@Test
 	public void deleteCreatureInvalid() {
-		Mockito.when(repo.deleteCreature(1)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, service.deleteCreature(1));
+		Mockito.when(repo.deleteCreature(MOCK_ITEM)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, service.deleteCreature(MOCK_ITEM));
 	}
 
 	@Test
 	public void testUpdateCreaturePart1() {
-		Mockito.when(repo.updateCreature(1, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, repo.updateCreature(1, MOCK_INPUT));
+		Mockito.when(repo.updateCreature(MOCK_ITEM, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, repo.updateCreature(MOCK_ITEM, MOCK_INPUT));
 	}
 
 	@Test
 	public void testUpdateCreaturePart2() {
-		Mockito.when(repo.updateCreature(1, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, service.updateCreature(1, MOCK_INPUT));
+		Mockito.when(repo.updateCreature(MOCK_ITEM, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, service.updateCreature(MOCK_ITEM, MOCK_INPUT));
 	}
 
 	@Test
 	public void testUpdateCreatureFailed() {
-		Mockito.when(repo.updateCreature(1, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, service.updateCreature(1, MOCK_INPUT));
+		Mockito.when(repo.updateCreature(MOCK_ITEM, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, service.updateCreature(MOCK_ITEM, MOCK_INPUT));
 	}
 }

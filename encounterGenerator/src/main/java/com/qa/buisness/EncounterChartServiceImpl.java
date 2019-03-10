@@ -1,7 +1,6 @@
 package com.qa.buisness;
 
 import javax.inject.Inject;
-import com.qa.persistence.domain.EncounterChart;
 import com.qa.persistence.repository.EncounterChartRepository;
 import com.qa.utils.InputChecker;
 import com.qa.utils.JSONUtil;

@@ -19,8 +19,8 @@ public interface EncounterChoiceRules {
 	String createCreature(String creature);
 
 	//D
-	String deleteCreature(int id);
+	String deleteCreature(String id);
 
 	//U
-	String updateCreature(int id, String creature);	
+	String updateCreature(String id, String creature);	
 }

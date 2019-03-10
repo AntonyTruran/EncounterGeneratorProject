@@ -7,8 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -32,7 +30,7 @@ public class Biome {
 	private String biomeName;
 	
 	@OneToMany(mappedBy="biomeKey",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-	private List<EncounterChart> chartEntries = new ArrayList<EncounterChart>();
+	private List<EncounterChart> chartEntries = new ArrayList<>();
 	
 	public String getBiomeReference() {
 		return biomeReference;

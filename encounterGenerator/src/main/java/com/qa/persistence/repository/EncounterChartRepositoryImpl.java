@@ -12,7 +12,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import com.qa.persistence.domain.Creature;
 import com.qa.persistence.domain.EncounterChart;
 import com.qa.utils.JSONUtil;
 

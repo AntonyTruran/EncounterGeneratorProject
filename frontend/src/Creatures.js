@@ -26,6 +26,7 @@ class Creatures extends Component {
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
     this.setName = this.setName.bind(this);
+    this.setCreatureName = this.setCreatureName.bind(this);
     this.setChallengeRating = this.setChallengeRating.bind(this)
     this.setType = this.setType.bind(this);
     this.setEnvironment = this.setEnvironment.bind(this);
@@ -212,6 +213,10 @@ class Creatures extends Component {
     this.setState({ creatureName: event.target.value });
     event.preventDefault();
   }
+  setCreatureName(event) {
+    this.setState({ creatureName: event.target.value });
+    event.preventDefault();
+  }
   setChallengeRating(event) {
     this.setState({ challengeRating: event.target.value });
     event.preventDefault();
@@ -271,7 +276,7 @@ class Creatures extends Component {
           <p>Please enter the creature type you wish to search for (abberation, animal, construct, dragon, fey, humanoid, magical beast, monstrous humanoid, ooze, outsider,plant, undead, vermin)</p>
           <br></br>
           <input type="text" id="chosentype" placeholder="choose environment" value={this.state.value} onChange={this.setType} />
-          <input type="button" id="environmentSearch" value="searchByenvironment" onClick={this.searchByType}></input>
+          <input type="button" id="environmentSearch" value="searchByType" onClick={this.searchByType}></input>
           <p>creature name, cr, type, environment, climate, alignment, combat role</p>
           <p id="creaturesByType"></p>
         </div>

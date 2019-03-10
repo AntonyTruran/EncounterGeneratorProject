@@ -62,10 +62,7 @@ public class EncounterChoiceImpl implements EncounterChoice {
 				.setParameter("chosenTable", chosenTable).setParameter("chance", chance);
 		try {
 			Object extractedNumber = number.getSingleResult();
-			System.out.println();
 			String extracted = extractedNumber.toString();
-			System.out.println(extracted);
-			System.out.println(extracted);
 			return quantity.calculate(extracted);
 		} catch (NoResultException e) {
 			return 0;
@@ -96,7 +93,7 @@ public class EncounterChoiceImpl implements EncounterChoice {
 
 	@Override
 	public String searchByAlignment(String chosenAlignment) {
-		Query creature = manager.createQuery("SELECT a.creatureName, a.challengeRating, a.type, a.environment, a.climate, a.alignment, a.combatRole FROM Creature a WHERE environment LIKE :chosenAlignment")
+		Query creature = manager.createQuery("SELECT a.creatureName, a.challengeRating, a.type, a.environment, a.climate, a.alignment, a.combatRole FROM Creature a WHERE alignment LIKE :chosenAlignment")
 				.setParameter("chosenAlignment", chosenAlignment);
 		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
 		return util.getJSONForObject(creatures);
@@ -104,7 +101,7 @@ public class EncounterChoiceImpl implements EncounterChoice {
 
 	@Override
 	public String searchByRole(String chosenRole) {
-		Query creature = manager.createQuery("SELECT a.creatureName, a.challengeRating, a.type, a.environment, a.climate, a.alignment, a.combatRole FROM Creature a WHERE environment LIKE :chosenRole")
+		Query creature = manager.createQuery("SELECT a.creatureName, a.challengeRating, a.type, a.environment, a.climate, a.alignment, a.combatRole FROM Creature a WHERE combatRole LIKE :chosenRole")
 				.setParameter("chosenRole", chosenRole);
 		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
 		return util.getJSONForObject(creatures);
@@ -112,7 +109,7 @@ public class EncounterChoiceImpl implements EncounterChoice {
 
 	@Override
 	public String searchByType(String chosenType) {
-		Query creature = manager.createQuery("SELECT a.creatureName, a.challengeRating, a.type, a.environment, a.climate, a.alignment, a.combatRole FROM Creature a WHERE environment LIKE :chosenType")
+		Query creature = manager.createQuery("SELECT a.creatureName, a.challengeRating, a.type, a.environment, a.climate, a.alignment, a.combatRole FROM Creature a WHERE type LIKE :chosenType")
 				.setParameter("chosenType", chosenType);
 		Collection<Creature> creatures = (Collection<Creature>) creature.getResultList();
 		return util.getJSONForObject(creatures);
@@ -128,7 +125,7 @@ public class EncounterChoiceImpl implements EncounterChoice {
 
 	@Transactional(REQUIRED)
 	@Override
-	public String deleteCreature(int id) {
+	public String deleteCreature(String id) {
 		if (manager.contains(manager.find(Creature.class, id))) {
 			manager.remove(manager.find(Creature.class, id));
 			return "{\"message\": \"creature has been successfully deleted\"}";
@@ -138,7 +135,7 @@ public class EncounterChoiceImpl implements EncounterChoice {
 
 	@Transactional(REQUIRED)
 	@Override
-	public String updateCreature(int id, String creature) {
+	public String updateCreature(String id, String creature) {
 		Creature aCreature = util.getObjectForJSON(creature, Creature.class);
 		if (manager.contains(manager.find(Creature.class, id))) {
 			manager.merge(aCreature);

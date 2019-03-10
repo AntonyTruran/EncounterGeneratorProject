@@ -1,7 +1,5 @@
 package com.qa.utils;
 
-import com.qa.persistence.domain.EncounterChart;
-
 public class InputChecker {
 	private static String[] bannedWords = { "SELECT", "DROP", "CREATE", "DELETE", "INSERT", "*", "\'", ";" };
 

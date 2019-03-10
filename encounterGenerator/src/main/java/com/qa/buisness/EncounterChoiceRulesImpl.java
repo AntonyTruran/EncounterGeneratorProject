@@ -56,12 +56,12 @@ public class EncounterChoiceRulesImpl implements EncounterChoiceRules {
 	}
 
 	@Override
-	public String deleteCreature(int id) {
+	public String deleteCreature(String id) {
 		return repo.deleteCreature(id);
 	}
  
 	@Override
-	public String updateCreature(int id, String creature) {
+	public String updateCreature(String id, String creature) {
 		return repo.updateCreature(id,creature);
 	}
 }
