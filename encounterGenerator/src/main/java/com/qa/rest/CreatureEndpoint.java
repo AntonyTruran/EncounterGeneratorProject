@@ -78,7 +78,7 @@ public class CreatureEndpoint {
 	@Path("/deleteCreature/{creatureName}")
 	@DELETE
 	@Produces({ "applicaiton/json" })
-	public String deleteCreature(@PathParam("creatureName") int id) {
+	public String deleteCreature(@PathParam("creatureName") String id) {
 		return service.deleteCreature(id);
 	}
 
@@ -86,7 +86,7 @@ public class CreatureEndpoint {
 	@Path("/updateCreature/{creatureName}")
 	@PUT
 	@Produces({ "application/json" })
-	public String updateCreature(@PathParam("creatureName") int id, String creature) {
+	public String updateCreature(@PathParam("creatureName") String id, String creature) {
 		return service.updateCreature(id, creature);
 }
 	public void setService(EncounterChoiceRules service) {

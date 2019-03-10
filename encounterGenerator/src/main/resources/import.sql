@@ -4,13 +4,13 @@ INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,ali
 INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('fire beetles','0.3', 'vermin', 'underground','temperate','NN','swarm');
 INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('skeletons','0.3','undead','ruins','temperate','NE','swarm');
 INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('giant centipede','0.5','vermin','underground','temperate','NN','swarm');
-INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('spider swarm','1','vermin','forest/jungle','temperate','NN','swarm');
+INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('spider swarm','1','vermin','forest-jungle','temperate','NN','swarm');
 INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('zombie','0.5','undead','ruins','temperate','NE','tank');
 INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('choker','2','aberration','underground','temperate','CE','assassin');
 INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('skeleton champion','2','undead','ruins','temperate','NE','leader');
-INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('goblins','0.3','humanoid','forest/jungle','temperate','NE','swarm');
+INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('goblins','0.3','humanoid','forest-jungle','temperate','NE','swarm');
 INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('ghoul','1','undead','ruins','temperate','CE','damage');
-INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('giant spiders','1','vermin','forest/jungle','temperate','NN','none');
+INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('giant spiders','1','vermin','forest-jungle','temperate','NN','none');
 INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('cockatrice','3','magical beast','plain','temperate','NN','special');
 INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('gelatinous cube','3','ooze','ruins','temperate','NN','special');
 INSERT INTO Creature (creatureName, challengeRating,type,environment,climate,alignment,combatRole) VALUES ('rust monster','3','aberration','underground','temperate','NN','special');

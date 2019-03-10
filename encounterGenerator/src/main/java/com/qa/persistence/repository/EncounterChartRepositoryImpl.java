@@ -12,7 +12,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import com.qa.persistence.domain.Creature;
 import com.qa.persistence.domain.EncounterChart;
 import com.qa.utils.JSONUtil;
 
@@ -51,19 +50,18 @@ public class EncounterChartRepositoryImpl implements EncounterChartRepository {
 
 	@Transactional(REQUIRED)
 	@Override
-	public String removeEncounterChart(String biomeKey, String monsterKey) {
-		if (manager.contains(manager.find(EncounterChart.class, biomeKey + monsterKey))) {
-			manager.remove(manager.find(EncounterChart.class, biomeKey + monsterKey));
+	public String removeEncounterChart(int id) {
+		if (manager.contains(manager.find(EncounterChart.class, id))) {
+			manager.remove(manager.find(EncounterChart.class, id));
 			return "{\"message\": \"the biome has been successfully deleted\"}";
 		}
 		return "{\"message\": \"invalid biome reference\"}";
 	}
-
 	@Transactional(REQUIRED)
 	@Override
-	public String updateEncounterChart(String biomeKey, String monsterKey, String updatedValue) {
+	public String updateEncounterChart(int id, String updatedValue) {
 		EncounterChart chartEntry = util.getObjectForJSON(updatedValue, EncounterChart.class);
-		if (manager.contains(manager.find(EncounterChart.class, biomeKey + monsterKey))) {
+		if (manager.contains(manager.find(EncounterChart.class, id))) {
 			manager.merge(chartEntry);
 			return "{\"message\": \"the biome has been successfully updated\"}";
 		}

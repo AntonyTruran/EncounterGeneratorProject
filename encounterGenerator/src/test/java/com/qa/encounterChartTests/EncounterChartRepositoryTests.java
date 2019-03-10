@@ -62,12 +62,12 @@ public class EncounterChartRepositoryTests {
 	public void removeEncounterChartValid() {
 		Mockito.when(manager.contains(Mockito.anyObject())).thenReturn(true);
 		assertEquals("{\"message\": \"the biome has been successfully deleted\"}",
-				repo.removeEncounterChart("any", "bats"));
+				repo.removeEncounterChart(1));
 	}
 
 	@Test
 	public void removeEncounterChartInvalid() {
-		assertEquals("{\"message\": \"invalid biome reference\"}", repo.removeEncounterChart("any", "bats"));
+		assertEquals("{\"message\": \"invalid biome reference\"}", repo.removeEncounterChart(1));
 	}
 
 	@Test
@@ -76,7 +76,7 @@ public class EncounterChartRepositoryTests {
 		Mockito.when(manager.contains(Mockito.anyObject())).thenReturn(true);
 		Mockito.when(manager.find(Mockito.any(), Mockito.anyInt())).thenReturn(updatedEncounterChart);
 		assertEquals("{\"message\": \"the biome has been successfully updated\"}",
-				repo.updateEncounterChart("any", "bats", updatedEncounterChart));
+				repo.updateEncounterChart(1, updatedEncounterChart));
 
 	}
 
@@ -84,6 +84,6 @@ public class EncounterChartRepositoryTests {
 	public void updateEncounterChartInvalid() {
 		String updatedEncounterChart = "{\"biomeId\":0,\"biomeReference\":\"URBLL\",\"biomeName\":\"urban\"}";
 		assertEquals("{\"message\": \"invalid biome reference\"}",
-				repo.updateEncounterChart("any", "bats", updatedEncounterChart));
+				repo.updateEncounterChart(1, updatedEncounterChart));
 	}
 }

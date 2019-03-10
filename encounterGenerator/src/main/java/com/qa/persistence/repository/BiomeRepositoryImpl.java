@@ -13,7 +13,6 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.qa.persistence.domain.Biome;
-import com.qa.persistence.domain.Creature;
 import com.qa.utils.JSONUtil;
 
 @Default
@@ -35,7 +34,7 @@ public class BiomeRepositoryImpl implements BiomeRepository {
 
 	@Override
 	public String getAllBiomes() {
-		Query query = manager.createQuery("SELECT a FROM Biome a");
+		Query query = manager.createQuery("SELECT a.biomeReference, a.biomeName FROM Biome a");
 		Collection<Biome> biomes = (Collection<Biome>) query.getResultList();
 		return util.getJSONForObject(biomes);
 	}
@@ -47,7 +46,6 @@ public class BiomeRepositoryImpl implements BiomeRepository {
 		manager.persist(newBiome);
 		return "{\"message\": \"biome has been successfully created\"}";
 	}
-
 
 	@Transactional(REQUIRED)
 	@Override
@@ -69,5 +67,4 @@ public class BiomeRepositoryImpl implements BiomeRepository {
 		}
 		return "{\"message\": \"invalid biome reference\"}";
 	}
-
 }

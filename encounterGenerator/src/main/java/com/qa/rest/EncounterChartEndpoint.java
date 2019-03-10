@@ -32,19 +32,19 @@ public class EncounterChartEndpoint {
 	}
 
 	// D
-	@Path("/removeEncounterChart/{biomeReference}+{monsterKey}")
+	@Path("/removeEncounterChart/{id}")
 	@DELETE
 	@Produces({ "applicaiton/json" })
-	public String removeEncounterChart(@PathParam("biomeKey")String biomeKey, @PathParam("monsterKey")String monsterKey) {
-		return service.removeEncounterChart(biomeKey, monsterKey);
+	public String removeEncounterChart(@PathParam("id") int id) {
+		return service.removeEncounterChart(id);
 	}
 
 	// U
-	@Path("/updateBiome/{biomeReference}")
+	@Path("/updateChartEntry/{id}")
 	@PUT
 	@Produces({ "application/json" })
-	public String updateEncounterChart(@PathParam("biomeKey")String biomeKey, @PathParam("monsterKey")String monsterKey, String updatedValue) {
-		return service.updateEncounterChart(biomeKey, monsterKey, updatedValue);
+	public String updateEncounterChart(@PathParam("id")int id, String updatedValue) {
+		return service.updateEncounterChart(id, updatedValue);
 	}
 
 	public void setService(EncounterChartService service) {

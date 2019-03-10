@@ -59,28 +59,21 @@ public class EncoutnerChartServiceTests {
 
 	@Test
 	public void removeEncounterChart() {
-		Mockito.when(repo.removeEncounterChart("any", "bats")).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, service.removeEncounterChart("any", "bats"));
-	}
-
-	@Test
-	public void testInvalidRemoveChart() {
-		Mockito.when(inputChecker.validityCheck("SELECT")).thenReturn("invalid");
-		Mockito.when(repo.removeEncounterChart(INVALID_INPUT, "bats")).thenReturn(INVALID_OUTPUT);
-		assertEquals(INVALID_OUTPUT, service.removeEncounterChart(INVALID_INPUT, "bats"));
+		Mockito.when(repo.removeEncounterChart(1)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, service.removeEncounterChart(1));
 	}
 
 	@Test
 	public void updateEncounterChart() {
-		Mockito.when(repo.updateEncounterChart(MOCK_INPUT, "bats", MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, service.updateEncounterChart(MOCK_INPUT, "bats", MOCK_INPUT));
+		Mockito.when(repo.updateEncounterChart(1, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, service.updateEncounterChart(1, MOCK_INPUT));
 	}
 
 	@Test
 	public void testInvalidUpdateChart() {
 		Mockito.when(inputChecker.validityCheck(INVALID_INPUT)).thenReturn("invalid");
-		Mockito.when(repo.updateEncounterChart(INVALID_INPUT, "bats", INVALID_INPUT)).thenReturn(INVALID_OUTPUT);
-		assertEquals(INVALID_OUTPUT, service.updateEncounterChart(INVALID_INPUT, "bats", INVALID_INPUT));
+		Mockito.when(repo.updateEncounterChart(1, INVALID_INPUT)).thenReturn(INVALID_OUTPUT);
+		assertEquals(INVALID_OUTPUT, service.updateEncounterChart(1, INVALID_INPUT));
 	}
 
 }

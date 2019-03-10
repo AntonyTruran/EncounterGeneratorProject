@@ -26,6 +26,7 @@ public class CreatureEndpointTests {
 
 	private static final String MOCK_INPUT = "test";
 	private static final String MOCK_OUTPUT = "test_output";
+	private static final String MOCK_ITEM = "goblins";
 
 	@Before
 	public void setUp() {
@@ -82,31 +83,31 @@ public class CreatureEndpointTests {
 
 	@Test
 	public void deleteCreatureValid() {
-		Mockito.when(service.deleteCreature(1)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, endpoint.deleteCreature(1));
+		Mockito.when(service.deleteCreature(MOCK_ITEM)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, endpoint.deleteCreature(MOCK_ITEM));
 	}
 
 	@Test
 	public void deleteCreatureInvalid() {
-		Mockito.when(service.deleteCreature(1)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, endpoint.deleteCreature(1));
+		Mockito.when(service.deleteCreature(MOCK_ITEM)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, endpoint.deleteCreature(MOCK_ITEM));
 	}
 
 	@Test
 	public void testUpdateCreaturePart1() {
-		Mockito.when(service.updateCreature(1, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, endpoint.updateCreature(1, MOCK_INPUT));
+		Mockito.when(service.updateCreature(MOCK_ITEM, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, endpoint.updateCreature(MOCK_ITEM, MOCK_INPUT));
 	}
 
 	@Test
 	public void testUpdateCreaturePart2() {
-		Mockito.when(service.updateCreature(1, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, endpoint.updateCreature(1, MOCK_INPUT));
+		Mockito.when(service.updateCreature(MOCK_ITEM, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, endpoint.updateCreature(MOCK_ITEM, MOCK_INPUT));
 	}
 
 	@Test
 	public void testUpdateCreatureFailed() {
-		Mockito.when(service.updateCreature(1, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
-		assertEquals(MOCK_OUTPUT, endpoint.updateCreature(1, MOCK_INPUT));
+		Mockito.when(service.updateCreature(MOCK_ITEM, MOCK_INPUT)).thenReturn(MOCK_OUTPUT);
+		assertEquals(MOCK_OUTPUT, endpoint.updateCreature(MOCK_ITEM, MOCK_INPUT));
 	}
 }
