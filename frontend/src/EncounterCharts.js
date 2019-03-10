@@ -54,7 +54,7 @@ class EncounterCharts extends Component {
     });
   }
   update = (e) => {
-    axios.put('http://35.189.103.145:8888/EncounterGenerator/api/encounterCharts/updateEncounterChart/' + this.state.entryId, {
+    axios.put('http://35.189.103.145:8888/EncounterGenerator/api/encounterCharts/updateChartEntry/' + this.state.entryId, {
       "monsterKey": document.getElementById('monsterKey').value,
       "biomeKey": document.getElementById('biomeKey').value,
       "number": document.getElementById('newNumber').value,
